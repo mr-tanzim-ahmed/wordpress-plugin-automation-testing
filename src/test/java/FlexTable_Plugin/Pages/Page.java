@@ -10,13 +10,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.time.Duration;
 import java.util.List;
 
-public class Page {
+public abstract class Page {
     WebDriver driver;
     WebDriverWait wait;
 
     public Page(WebDriver driver){
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(FlexTable_Plugin_Util.WAIT_Time));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(FlexTable_Plugin_Util.WAIT_TIME));
 
     }
 

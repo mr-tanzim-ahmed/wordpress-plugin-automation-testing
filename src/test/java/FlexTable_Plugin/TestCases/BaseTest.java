@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeClass;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.time.Duration;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -47,8 +48,12 @@ public class BaseTest {
         }
         driver.manage().window().maximize();
         driver.get(properties.getProperty("loginPageURL"));
-        driver.manage().timeouts().implicitlyWait(FlexTable_Plugin_Util.WAIT_TIME, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(FlexTable_Plugin_Util.WAIT_TIME));
         page = new BasePage(driver);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("hi");
     }
 
 }

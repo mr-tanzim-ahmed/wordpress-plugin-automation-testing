@@ -28,7 +28,7 @@ public class AdminLoginPage extends BasePage{
         clickElement(By.cssSelector(".dashicons.dashicons-visibility"));
         return this;
     }
-
+// @log
     public DashboardPage clickLoginButton(){
         clickElement(By.cssSelector("#wp-submit"));
         return goTo(DashboardPage.class);

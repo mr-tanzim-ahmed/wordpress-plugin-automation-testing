@@ -57,7 +57,7 @@ import java.util.Properties;
             page = new BasePage(driver);
         }
 
-        @AfterMethod
+        @AfterClass
         public void closeBrowser() {
             driver.quit();
         }

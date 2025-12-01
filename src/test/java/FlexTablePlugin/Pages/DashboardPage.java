@@ -2,6 +2,7 @@ package FlexTablePlugin.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import FlexTablePlugin.Pages.*;
 
 public class DashboardPage extends BasePage{
     public DashboardPage(WebDriver driver) {
@@ -9,7 +10,7 @@ public class DashboardPage extends BasePage{
         super(driver);
     }
     //plugin icon xpath:  //div[@class='wp-menu-image dashicons-before dashicons-admin-plugins']
-    public InstalledPluginsPage clickPluginsInDashboard(){
+    public static InstalledPluginsPage clickPluginsInDashboard(){
         clickElement(By.xpath("//div[@class='wp-menu-image dashicons-before dashicons-admin-plugins']"));
         return goTo(InstalledPluginsPage.class);
     }

@@ -1,6 +1,7 @@
 package FlexTablePlugin.TestCases;
 
 import FlexTablePlugin.Pages.AdminLoginPage;
+
 import FlexTablePlugin.Pages.DashboardPage;
 import FlexTablePlugin.Pages.InstalledPluginsPage;
 import FlexTablePlugin.Pages.WpPluginDirectoryPage;
@@ -10,9 +11,10 @@ import org.testng.annotations.Test;
 public class InstalledPluginsPageTest extends BaseTest {
     @Test(priority = 1)
     public void checkInstalledPluginsPage() {
-        InstalledPluginsPage pluginPage = page.goTo(AdminLoginPage.class)
-                .doLogin(getUserNameOrEmail(), getPassword())
-                        .clickPluginsInDashboard();
+        page.goTo(AdminLoginPage.class)
+                .doLogin(getUserNameOrEmail(), getPassword());
+        InstalledPluginsPage pluginPage = DashboardPage
+                .clickPluginsInDashboard();
         Assert.assertTrue(pluginPage.isItPluginPage());
     }
 
@@ -21,25 +23,25 @@ public class InstalledPluginsPageTest extends BaseTest {
     public void pluginInstallShouldBeSuccessful(){
         WpPluginDirectoryPage pluginPage = page.goTo(InstalledPluginsPage.class)
                 .clickAddPlugin()
-                .installPluginInWPDirectoryPage().activatePluginFromWPDirectoryPage();
+                .installPluginInWPDirectoryPage();
 
-        InstalledPluginsPage installedPluginsPage = page.goTo(InstalledPluginsPage.class)
-                        .
-        Assert.assertTrue(pluginPage.isPluginInstalled());
+        InstalledPluginsPage installedPluginsPage = page.goTo(InstalledPluginsPage.class);
+
+        Assert.assertTrue(installedPluginsPage.isPluginInstalled());
     }
 
     @Test(priority = 3)
     //Validation of plugin is active
     public void validateFlexTablePluginIsActive() {
-        InstalledPluginsPage pluginPage = page.goTo(InstalledPluginsPage.class);
+        InstalledPluginsPage installedPluginsPage = page.goTo(InstalledPluginsPage.class);
 
-        if (!pluginPage.isPluginInstalled()) {
-            pluginPage.installPlugin();
+        if (!installedPluginsPage.isPluginInstalled()) {
+            installedPluginsPage.activatePlugin();
         }
-        if (!pluginPage.isPluginActive()) {
-            pluginPage.activatePlugin();
+        if (!installedPluginsPage.isPluginActive()) {
+            installedPluginsPage.activatePlugin();
         }
-        Assert.assertTrue(pluginPage.isPluginActive());
+        Assert.assertTrue(installedPluginsPage.isPluginActive());
     }
 
     //Install FlexTable plugin via upload plugin zip file

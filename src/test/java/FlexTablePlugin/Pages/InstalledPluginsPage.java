@@ -2,6 +2,7 @@ package FlexTablePlugin.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import FlexTablePlugin.Pages.*;
 
 public class InstalledPluginsPage extends BasePage{
 
@@ -26,16 +27,7 @@ public class InstalledPluginsPage extends BasePage{
         clickElement(By.xpath("//a[@id='activate-sheets-to-wp-table-live-sync']"));
         setLoadingTime(1);
     }
-    public void installPlugin(){
-        waitForElementToBeVisible(By.xpath("//a[@id='activate-sheets-to-wp-table-live-sync']"));
-        if(getElementsText(By.xpath("//a[@id='activate-sheets-to-wp-table-live-sync']")).trim().equals("Activate")){
-            System.out.println("FlexTable plugin is already installed.");
-        }
-        //click activate button
-        clickElement(By.xpath("//a[@id='activate-sheets-to-wp-table-live-sync']"));
-        //Wait for installation to complete
-        waitForElementToBeVisible(By.cssSelector("a[aria-label='Activate FlexTable']"));
-    }
+
 
     public boolean isPluginInstalled(){
         String pluginName = getElementsText(By.xpath("//td[@class='plugin-title column-primary']//strong[contains(text(),'FlexTable')]")).trim();

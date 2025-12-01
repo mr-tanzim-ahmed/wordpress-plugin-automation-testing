@@ -2,9 +2,8 @@ package FlexTablePlugin.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import FlexTablePlugin.Pages.*;
 import java.io.File;
-
 import static FlexTablePlugin.TestCases.BaseTest.properties;
 
 public class WpPluginDirectoryPage extends BasePage{
@@ -29,8 +28,10 @@ public class WpPluginDirectoryPage extends BasePage{
         waitForElementToBeVisible(By.xpath("//a[normalize-space()='Activate Plugin']"));
         clickElement(By.xpath("//a[normalize-space()='Activate Plugin']"));
         setLoadingTime(1);
+        DashboardPage.clickPluginsInDashboard();
         return goTo(InstalledPluginsPage.class);
     }
+
     public void searchPlugin(){
         waitForElementToBeVisible(By.cssSelector("#search-plugins"));
         setInput(By.cssSelector("#search-plugins"),pluginFileName);

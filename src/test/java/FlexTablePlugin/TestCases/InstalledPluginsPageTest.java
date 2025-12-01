@@ -2,7 +2,7 @@ package FlexTablePlugin.TestCases;
 
 import FlexTablePlugin.Pages.AdminLoginPage;
 
-import FlexTablePlugin.Pages.DashboardPage;
+import FlexTablePlugin.Pages.*;
 import FlexTablePlugin.Pages.InstalledPluginsPage;
 import FlexTablePlugin.Pages.WpPluginDirectoryPage;
 import org.testng.Assert;
@@ -13,7 +13,7 @@ public class InstalledPluginsPageTest extends BaseTest {
     public void checkInstalledPluginsPage() {
         page.goTo(AdminLoginPage.class)
                 .doLogin(getUserNameOrEmail(), getPassword());
-        InstalledPluginsPage pluginPage = DashboardPage
+        InstalledPluginsPage pluginPage = page.goTo(DashboardPage.class)
                 .clickPluginsInDashboard();
         Assert.assertTrue(pluginPage.isItPluginPage());
     }

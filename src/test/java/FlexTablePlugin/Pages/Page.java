@@ -11,7 +11,7 @@ import java.time.Duration;
 import java.util.List;
 
 public abstract class Page {
-    WebDriver driver;
+    static WebDriver driver;
     WebDriverWait wait;
 
     public Page(WebDriver driver){

@@ -23,19 +23,18 @@ public class InstalledPluginsPage extends BasePage{
     }
 
     public void activatePlugin(){
-        clickElement(By.cssSelector("a[aria-label='Activate FlexTable']"));
+        clickElement(By.xpath("//a[@id='activate-sheets-to-wp-table-live-sync']"));
         setLoadingTime(1);
     }
-    public InstalledPluginsPage installPlugin(){
+    public void installPlugin(){
         waitForElementToBeVisible(By.xpath("//a[@id='activate-sheets-to-wp-table-live-sync']"));
         if(getElementsText(By.xpath("//a[@id='activate-sheets-to-wp-table-live-sync']")).trim().equals("Activate")){
             System.out.println("FlexTable plugin is already installed.");
-            return this;
         }
+        //click activate button
         clickElement(By.xpath("//a[@id='activate-sheets-to-wp-table-live-sync']"));
         //Wait for installation to complete
         waitForElementToBeVisible(By.cssSelector("a[aria-label='Activate FlexTable']"));
-        return this;
     }
 
     public boolean isPluginInstalled(){
@@ -46,7 +45,7 @@ public class InstalledPluginsPage extends BasePage{
         return false;
     }
     public boolean isPluginActive(){
-        String deactivateText = getElementsText(By.cssSelector("#deactivate-sheets-to-wp-table-live-sync")).trim();
+        String deactivateText = getElementsText(By.xpath("//a[@id='deactivate-sheets-to-wp-table-live-sync']")).trim();
         if(deactivateText.equals("Deactivate")){
             return true;
         }

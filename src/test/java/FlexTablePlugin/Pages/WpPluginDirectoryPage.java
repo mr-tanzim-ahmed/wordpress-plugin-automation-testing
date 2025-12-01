@@ -3,38 +3,47 @@ package FlexTablePlugin.Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.io.File;
+
+import static FlexTablePlugin.TestCases.BaseTest.properties;
+
 public class WpPluginDirectoryPage extends BasePage{
     public WpPluginDirectoryPage(WebDriver driver) {
         super(driver);
     }
+
     public void searchPlugin(String pluginName){
         waitForElementToBeVisible(By.cssSelector("#search-plugins"));
         setInput(By.cssSelector("#search-plugins"),pluginName);
         setLoadingTime(2);
     }
-    public void installPluginInWPDirectoryPage(){
+
+    public WpPluginDirectoryPage installPluginFromWPDirectoryPage(){
         waitForElementToBeVisible(By.cssSelector(".install-now"));
         clickElement(By.cssSelector(".install-now"));
         //Wait for installation to complete
         waitForElementToBeVisible(By.cssSelector("a[aria-label='Activate FlexTable']"));
+        return this;
     }
+    public  String pluginFileName = properties.getProperty("pluginName");
 
-    public void uploadPlugin(String filePath){
-        waitForElementToBeVisible(By.cssSelector("..upload"));
-        clickElement(By.cssSelector(".upload"));
+    public WpPluginDirectoryPage uploadPluginsFile(String pluginName) {
 
-        //filePath="/home/acer/Downloads/depicter.4.0.4.zip";
+
+        File pluginFile = new File(System.getProperty("user.dir") + "/src/test/resources/" + pluginFileName);
+        String absolutePath = pluginFile.getAbsolutePath();
         waitForElementToBeVisible(By.cssSelector("#pluginzip"));
-        setInput(By.cssSelector("#pluginzip"),filePath);
-
-        if(filePath.isEmpty()){
-            System.out.println("Plugin file not upload.");
-        }
-        else {
-            clickElement(By.cssSelector("#install-plugin-submit"));
-            //Wait for installation to complete
-            waitForElementToBeVisible(By.cssSelector("a[aria-label='Activate FlexTable']"));
-            setLoadingTime(2);
-        }
+        getWebElement(By.cssSelector("#pluginzip")).sendKeys(absolutePath);
+        setLoadingTime(2);
+        return this;
     }
+    public WpPluginDirectoryPage installPluginViaUpload(){
+        uploadPluginsFile(pluginFileName);
+        clickElement(By.cssSelector("#install-plugin-submit"));
+        //Wait for installation to complete
+        setLoadingTime(2); //installing time
+        return this;
+    }
+
+
 }

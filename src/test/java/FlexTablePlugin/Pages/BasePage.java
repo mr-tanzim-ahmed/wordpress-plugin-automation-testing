@@ -1,5 +1,6 @@
 package FlexTablePlugin.Pages;
 
+import FlexTablePlugin.TestCases.BaseTest;
 import com.aventstack.extentreports.Status;
 import FlexTablePlugin.Report.*;
 import org.openqa.selenium.By;
@@ -8,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
+import java.util.Properties;
 
 public class BasePage extends Page {
 
@@ -75,6 +77,7 @@ public class BasePage extends Page {
 
         return driver.getCurrentUrl();
     }
+
     public void setLoadingTime(int seconds){
         try {
             Thread.sleep(seconds * 1000);

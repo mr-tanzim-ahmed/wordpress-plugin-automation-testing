@@ -12,9 +12,8 @@ public class InstalledPluginsPageTest extends BaseTest {
     public void checkInstalledPluginsPage() {
         InstalledPluginsPage pluginPage = page.goTo(AdminLoginPage.class)
                 .doLogin(getUserNameOrEmail(), getPassword())
-                .clickPluginsInDashboard();
+                        .clickPluginsInDashboard();
 
-                //.goTo(InstalledPluginsPage.class);
         Assert.assertTrue(pluginPage.isItPluginPage());
     }
 
@@ -36,20 +35,28 @@ public class InstalledPluginsPageTest extends BaseTest {
     //Install FlexTable plugin via upload plugin zip file
     @Test(priority = 3)
     public void validateFlexTablePluginIsActiveViaUpload() {
-        WpPluginDirectoryPage pluginPage = page.goTo(InstalledPluginsPage.class)
-                        .clickAddPlugin();
 
+        // Step 1: Go to Installed Plugins Page
+        InstalledPluginsPage installedPlugins = page.goTo(InstalledPluginsPage.class);
 
-        if (!pluginPage.isPluginInstalled()) {
-            String filePath = System.getProperty("user.dir") + "/src/test/resources/"
-                    + properties.getProperty("pluginName");
+        // Step 2: If NOT installed, upload and install
+        if (!installedPlugins.isPluginInstalled()) {
 
-            pluginPage.uploadPlugin(filePath);
+            // Click "Add New"
+            WpPluginDirectoryPage pluginDirectory = installedPlugins.clickAddPlugin();
 
+            // Upload ZIP file
+            pluginDirectory.installPluginViaUpload();
+
+            // After uploading, go back to Installed Plugins
+            installedPlugins = page.goTo(InstalledPluginsPage.class);
         }
-        InstalledPluginsPage pluginPage = page.goTo(InstalledPluginsPage.class)
-        if (!pluginPage.isPluginActive()) {
-            pluginPage.activatePlugin();
+        // Step 3: Activate if not active
+        if (!installedPlugins.isPluginActive()) {
+            installedPlugins.activatePlugin();
         }
+        // Step 4: Final validation
+        Assert.assertTrue(installedPlugins.isPluginActive(), "Plugin should be active after upload.");
     }
+
 }

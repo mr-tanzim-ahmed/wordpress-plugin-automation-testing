@@ -41,6 +41,7 @@ public class AdminLoginPage extends BasePage{
         enterUserNameOrEmail(userNameOrEmail);
         enterPassword(password);
         clickLoginButton();
+        setLoadingTime(1);
         return goTo(DashboardPage.class);
     }
 

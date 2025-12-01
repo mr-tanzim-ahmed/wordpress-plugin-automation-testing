@@ -23,7 +23,7 @@ import java.util.Properties;
 
         public BaseTest() {
             properties = new Properties();
-            //user.dir -->> project home directory
+
             String path = System.getProperty("user.dir") + "/src/test/resources/config.properties";
 
             try {

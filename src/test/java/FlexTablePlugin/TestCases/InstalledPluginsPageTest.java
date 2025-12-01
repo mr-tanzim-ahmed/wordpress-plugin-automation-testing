@@ -13,13 +13,23 @@ public class InstalledPluginsPageTest extends BaseTest {
         InstalledPluginsPage pluginPage = page.goTo(AdminLoginPage.class)
                 .doLogin(getUserNameOrEmail(), getPassword())
                         .clickPluginsInDashboard();
-
         Assert.assertTrue(pluginPage.isItPluginPage());
     }
 
+    //Install FlexTable plugin regular way
+    @Test (priority = 2)
+    public void pluginInstallShouldBeSuccessful(){
+        WpPluginDirectoryPage pluginPage = page.goTo(InstalledPluginsPage.class)
+                .clickAddPlugin()
+                .installPluginInWPDirectoryPage().activatePluginFromWPDirectoryPage();
 
-    @Test(priority = 2)
-    //Install FlexTable plugin regular way and Validation of plugin is active
+        InstalledPluginsPage installedPluginsPage = page.goTo(InstalledPluginsPage.class)
+                        .
+        Assert.assertTrue(pluginPage.isPluginInstalled());
+    }
+
+    @Test(priority = 3)
+    //Validation of plugin is active
     public void validateFlexTablePluginIsActive() {
         InstalledPluginsPage pluginPage = page.goTo(InstalledPluginsPage.class);
 

@@ -10,7 +10,7 @@ public class DashboardPage extends BasePage{
     }
     //plugin icon xpath:  //div[@class='wp-menu-image dashicons-before dashicons-admin-plugins']
     public InstalledPluginsPage clickPluginsInDashboard(){
-        clickElement(By.xpath("//div[normalize-space()='Plugins']"));
+        clickElement(By.xpath("//div[@class='wp-menu-image dashicons-before dashicons-admin-plugins']"));
         return goTo(InstalledPluginsPage.class);
     }
     public boolean isItDashboardPage(){

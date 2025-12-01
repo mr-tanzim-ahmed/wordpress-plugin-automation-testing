@@ -2,7 +2,6 @@ package FlexTablePlugin.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import FlexTablePlugin.Pages.BasePage;
 
 public class AdminLoginPage extends BasePage{
 
@@ -12,11 +11,7 @@ public class AdminLoginPage extends BasePage{
     public AdminLoginPage enterUserNameOrEmail(String userNameOrEmail){
         clearInputText(By.id("user_login"));
         setInput(By.id("user_login"),userNameOrEmail);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        setLoadingTime(2);
         return this;
     }
     public AdminLoginPage enterPassword(String password){

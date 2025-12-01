@@ -52,8 +52,9 @@ public class BasePage extends Page {
     }
 
     @Override
-    public void getElementsText(By selector) {
-        getWebElement(selector).getText();
+    public String getElementsText(By selector) {
+        String text = getWebElement(selector).getText();
+        return text;
     }
 
     @Override
@@ -62,7 +63,15 @@ public class BasePage extends Page {
     }
     @Override
     public String getCurrentPageURL(){
+
         return driver.getCurrentUrl();
+    }
+    public void setLoadingTime(int seconds){
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

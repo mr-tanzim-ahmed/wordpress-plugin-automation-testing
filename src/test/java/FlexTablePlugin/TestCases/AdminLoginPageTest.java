@@ -14,16 +14,16 @@ public class AdminLoginPageTest extends BaseTest {
         Assert.assertTrue(loginPageUrl.contains(properties.getProperty("baseURL")));
     }
     /*1️⃣ Test Case 1: Verify WordPress Login Functionality
-Objective: Ensure the user can successfully log in to the WordPress Admin Panel.
-Steps:
-1. Navigate to the WordPress login page.
-2. Enter valid username and password.
-3. Click the Log In button.
-Expected Result:
-- User is redirected to the WordPress Dashboard without errors.
+        Objective: Ensure the user can successfully log in to the WordPress Admin Panel.
+        Steps:
+        1. Navigate to the WordPress login page.
+        2. Enter valid username and password.
+        3. Click the Log In button.
+        Expected Result:
+        - User is redirected to the WordPress Dashboard without errors.
     */
 
-    @Test
+    @Test(priority = 2)
     public void loginShouldSucceed(){
         DashboardPage dashboardPage = page.goTo(AdminLoginPage.class)
                 .enterUserNameOrEmail(getUserNameOrEmail())
@@ -32,12 +32,5 @@ Expected Result:
                 .checkRememberMe()
                 .clickLoginButton();
     }
-
-    public static void main(String[] args) {
-        System.out.println(properties.getProperty("browser"));
-        System.out.println(properties.getProperty("userName"));
-        System.out.println(properties.getProperty("baseURL"));
-    }
-
 
 }

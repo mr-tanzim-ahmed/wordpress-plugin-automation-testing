@@ -28,7 +28,9 @@ public abstract class Page {
 
     public abstract void setInput(By selector, String text);
 
-    public abstract void getElementsText(By selector);
+    public abstract String  getElementsText(By selector);
+
+    public abstract void setLoadingTime(int seconds);
 
     public abstract void selectElement(By selector);
 

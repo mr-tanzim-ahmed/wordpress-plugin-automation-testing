@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="Automation Test Cases">
-        <packages>
-          <package name="FlexTablePlugin.TestCases">
+    <test name="Automation Test Cases" preserve-order="true">
+        <classes>
+            <!-- Test Case 1 -->
+            <class name="FlexTablePlugin.TestCases.AdminLoginPageTest" />
 
-          </package>
-        </packages>
+            <!-- Test Case 2 -->
+            <class name="FlexTablePlugin.TestCases.DashboardPageTest" />
+        </classes>
     </test>
 </suite>

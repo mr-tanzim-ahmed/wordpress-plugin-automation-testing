@@ -7,8 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -35,7 +34,7 @@ import java.util.Properties;
             }
         }
 
-        @BeforeMethod
+        @BeforeClass
         public void browserSetup() {
             String browserName = properties.getProperty("browser");
             switch (browserName.toLowerCase()) {
@@ -58,7 +57,7 @@ import java.util.Properties;
             page = new BasePage(driver);
         }
 
-        @AfterMethod
+        @AfterSuite
         public void closeBrowser() {
             driver.quit();
         }

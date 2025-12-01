@@ -15,11 +15,18 @@ dependencies {
     testImplementation 'org.testng:testng:7.10.2'
 
     implementation 'io.github.bonigarcia:webdrivermanager:5.9.2'
+
+    testImplementation 'com.aventstack:extentreports:5.1.2'
 }
 
 test {
-    useTestNG()
-
+    useTestNG() {
+        if (project.hasProperty('testng.suites')) {
+            project.property('testng.suites').toString().split(',').each { suite ->
+                suites 'src/test/resources/' + suite + '-suite.xml'
+            }
+        }
+    }
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }

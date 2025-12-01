@@ -10,36 +10,36 @@ public class InstalledPluginsPage extends BasePage{
         super(driver);
     }
     public boolean isItPluginPage(){
-        String title = getElementsText(By.cssSelector(".wp-heading-inline"));
+        String title = getElementsText(By.xpath("//h1[normalize-space()='Plugins']"));
         if(title.equals("Plugins")){
             return true;
         }
         return false;
     }
-    public void clickAddPlugin(){
+    public WpPluginDirectoryPage clickAddPlugin(){
         waitForElementToBeVisible(By.cssSelector(".page-title-action"));
         clickElement(By.cssSelector(".page-title-action"));
+        return goTo(WpPluginDirectoryPage.class);
     }
-    public void searchPlugin(String pluginName){
-        waitForElementToBeVisible(By.cssSelector("#search-plugins"));
-        setInput(By.cssSelector("#search-plugins"),pluginName);
-        setLoadingTime(2);
-    }
-    public void installPlugin(){
-        waitForElementToBeVisible(By.cssSelector(".install-now"));
-        clickElement(By.cssSelector(".install-now"));
-        //Wait for installation to complete
-        waitForElementToBeVisible(By.cssSelector("a[aria-label='Activate FlexTable']"));
 
-    }
     public void activatePlugin(){
         clickElement(By.cssSelector("a[aria-label='Activate FlexTable']"));
         setLoadingTime(1);
     }
+    public InstalledPluginsPage installPlugin(){
+        waitForElementToBeVisible(By.xpath("//a[@id='activate-sheets-to-wp-table-live-sync']"));
+        if(getElementsText(By.xpath("//a[@id='activate-sheets-to-wp-table-live-sync']")).trim().equals("Activate")){
+            System.out.println("FlexTable plugin is already installed.");
+            return this;
+        }
+        clickElement(By.xpath("//a[@id='activate-sheets-to-wp-table-live-sync']"));
+        //Wait for installation to complete
+        waitForElementToBeVisible(By.cssSelector("a[aria-label='Activate FlexTable']"));
+        return this;
+    }
 
     public boolean isPluginInstalled(){
-        clickAddPlugin();
-        String pluginName = getElementsText(By.cssSelector("td[class='plugin-title column-primary'] strong")).trim();
+        String pluginName = getElementsText(By.xpath("//td[@class='plugin-title column-primary']//strong[contains(text(),'FlexTable')]")).trim();
         if(pluginName.equals("FlexTable")){
             return true;
         }
@@ -52,25 +52,7 @@ public class InstalledPluginsPage extends BasePage{
         }
         return false;
     }
-    public void uploadPlugin(String filePath){
-        clickAddPlugin();
-        waitForElementToBeVisible(By.cssSelector("..upload"));
-        clickElement(By.cssSelector(".upload"));
 
-        //filePath="/home/acer/Downloads/depicter.4.0.4.zip";
-        waitForElementToBeVisible(By.cssSelector("#pluginzip"));
-        setInput(By.cssSelector("#pluginzip"),filePath);
-
-        if(filePath.isEmpty()){
-            System.out.println("Plugin file not upload.");
-        }
-        else {
-            clickElement(By.cssSelector("#install-plugin-submit"));
-            //Wait for installation to complete
-            waitForElementToBeVisible(By.cssSelector("a[aria-label='Activate FlexTable']"));
-            setLoadingTime(2);
-        }
-    }
 
 
 

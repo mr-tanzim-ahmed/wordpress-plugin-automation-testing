@@ -37,5 +37,11 @@ public class AdminLoginPage extends BasePage{
         clickElement(By.cssSelector("#wp-submit"));
         return goTo(LostPasswordPage.class);
     }
+    public DashboardPage doLogin(String userNameOrEmail, String password){
+        enterUserNameOrEmail(userNameOrEmail);
+        enterPassword(password);
+        clickLoginButton();
+        return goTo(DashboardPage.class);
+    }
 
 }

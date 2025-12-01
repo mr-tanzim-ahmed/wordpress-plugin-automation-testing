@@ -8,6 +8,9 @@
 
             <!-- Test Case 2 -->
             <class name="FlexTablePlugin.TestCases.DashboardPageTest" />
+
+            <!-- Test Case 2 -->
+            <class name="FlexTablePlugin.TestCases.InstalledPluginsPageTest" />
         </classes>
     </test>
 </suite>

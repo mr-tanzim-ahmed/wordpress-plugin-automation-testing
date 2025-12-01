@@ -17,7 +17,6 @@ import java.time.Duration;
 import java.util.Properties;
 
 
-
     public class BaseTest {
         public WebDriver driver;
         Page page;
@@ -55,7 +54,7 @@ import java.util.Properties;
             driver.manage().window().maximize();
             driver.get(properties.getProperty("baseURL"));
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds( FlexTablePluginUtil.WAIT_TIME));
-            //By using BasePage , we can access "BasePage" and parent "Page" elements
+
             page = new BasePage(driver);
         }
 
@@ -65,7 +64,7 @@ import java.util.Properties;
         }
 
         public String getUserNameOrEmail() {
-            return properties.getProperty("username");
+            return properties.getProperty("userName");
         }
 
         public String getPassword() {

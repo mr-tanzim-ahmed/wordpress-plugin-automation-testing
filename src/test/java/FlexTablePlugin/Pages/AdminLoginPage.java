@@ -12,11 +12,16 @@ public class AdminLoginPage extends BasePage{
     public AdminLoginPage enterUserNameOrEmail(String userNameOrEmail){
         clearInputText(By.id("user_login"));
         setInput(By.id("user_login"),userNameOrEmail);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return this;
     }
     public AdminLoginPage enterPassword(String password){
-        clearInputText(By.id("#user_pass"));
-        setInput(By.id("user_pass"),password);
+        setInput(By.cssSelector("#user_pass"),password);
+
         return this;
     }
     public AdminLoginPage checkRememberMe(){

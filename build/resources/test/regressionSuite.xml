@@ -3,7 +3,7 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="Automation Test Cases">
         <packages>
-          <package name="FlexTablePlugin.*">
+          <package name="FlexTablePlugin.TestCases">
 
           </package>
         </packages>

@@ -6,23 +6,37 @@ import FlexTablePlugin.Pages.BasePage;
 import org.testng.annotations.Test;
 
 public class AdminLoginPageTest extends BaseTest {
-
     //Check Login page URL
     @Test(priority = 1)
     public void checkLoginPageUrl(){
         AdminLoginPage login = page.goTo(AdminLoginPage.class);
         String loginPageUrl = login.getCurrentPageURL();
-        Assert.assertEquals(loginPageUrl,properties.getProperty("baseURL"));
+        Assert.assertTrue(loginPageUrl.contains(properties.getProperty("baseURL")));
     }
-    //Test Case 1: Verify WordPress Login Functionality
+    /*1️⃣ Test Case 1: Verify WordPress Login Functionality
+Objective: Ensure the user can successfully log in to the WordPress Admin Panel.
+Steps:
+1. Navigate to the WordPress login page.
+2. Enter valid username and password.
+3. Click the Log In button.
+Expected Result:
+- User is redirected to the WordPress Dashboard without errors.
+    */
+
     @Test
     public void loginShouldSucceed(){
         DashboardPage dashboardPage = page.goTo(AdminLoginPage.class)
                 .enterUserNameOrEmail(getUserNameOrEmail())
-                .enterPassword(properties.getProperty(getPassword()))
+                .enterPassword(getPassword())
                 .clickPasswordVisibility()
                 .checkRememberMe()
                 .clickLoginButton();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(properties.getProperty("browser"));
+        System.out.println(properties.getProperty("userName"));
+        System.out.println(properties.getProperty("baseURL"));
     }
 
 

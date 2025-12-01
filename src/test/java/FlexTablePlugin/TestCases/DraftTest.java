@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class DraftTest extends BaseTest {
     public static void main(String[] args) {
-        /*Properties properties = new Properties();
+        Properties properties = new Properties();
         properties = new Properties();
         //user.dir -->> project home directory
         String path = System.getProperty("user.dir") + "/src/test/resources/config.properties";
@@ -17,10 +17,8 @@ public class DraftTest extends BaseTest {
             properties.load(inputStream);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }*/
-        System.out.println(properties.getProperty("browser"));
-        System.out.println(properties.getProperty("userName"));
-        System.out.println(properties.getProperty("baseURL"));
+        }
+
 
     }
 }

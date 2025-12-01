@@ -40,7 +40,7 @@ public abstract class Page {
 
     public abstract void waitForElementToBeVisible(By selector);
     //Returns an obj of any class that is extended by BasePage
-    public <T extends BasePage>T goTo(Class<T> pageClass){
+    public static <T extends BasePage>T goTo(Class<T> pageClass){
         try {
             return pageClass.getDeclaredConstructor(WebDriver.class).newInstance(driver);
         } catch (InstantiationException e) {

@@ -24,12 +24,11 @@ public class WpPluginDirectoryPage extends BasePage{
         setLoadingTime(2);
         return this;
     }
-    public InstalledPluginsPage activatePluginFromWPDirectoryPage(){
+    public WpPluginDirectoryPage activatePluginFromWPDirectoryPage(){
         waitForElementToBeVisible(By.xpath("//a[normalize-space()='Activate Plugin']"));
         clickElement(By.xpath("//a[normalize-space()='Activate Plugin']"));
         setLoadingTime(1);
-        DashboardPage.clickPluginsInDashboard();
-        return goTo(InstalledPluginsPage.class);
+        return this;
     }
 
     public void searchPlugin(){

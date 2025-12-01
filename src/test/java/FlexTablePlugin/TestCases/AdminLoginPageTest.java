@@ -1,8 +1,8 @@
 package FlexTablePlugin.TestCases;
 
 import FlexTablePlugin.Pages.*;
-import org.openqa.selenium.json.JsonOutput;
 import org.testng.Assert;
+import FlexTablePlugin.Pages.BasePage;
 import org.testng.annotations.Test;
 
 public class AdminLoginPageTest extends BaseTest {
@@ -12,14 +12,14 @@ public class AdminLoginPageTest extends BaseTest {
     public void checkLoginPageUrl(){
         AdminLoginPage login = page.goTo(AdminLoginPage.class);
         String loginPageUrl = login.getCurrentPageURL();
-        Assert.assertEquals(loginPageUrl,properties.getProperty("loginPageURL"));
+        Assert.assertEquals(loginPageUrl,properties.getProperty("baseURL"));
     }
     //Test Case 1: Verify WordPress Login Functionality
     @Test
     public void loginShouldSucceed(){
         DashboardPage dashboardPage = page.goTo(AdminLoginPage.class)
                 .enterUserNameOrEmail(getUserNameOrEmail())
-                .enterPassword(getPassword())
+                .enterPassword(properties.getProperty(getPassword()))
                 .clickPasswordVisibility()
                 .checkRememberMe()
                 .clickLoginButton();

@@ -2,7 +2,7 @@ package FlexTablePlugin.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import FlexTablePlugin.Pages.BasePage;
 
 public class AdminLoginPage extends BasePage{
 

@@ -44,6 +44,7 @@ public class InstalledPluginsPage extends BasePage{
         return this;
     }
 
+
     public boolean isPluginInstalled(){
         String pluginName = getElementsText(By.xpath("//td[@class='plugin-title column-primary']//strong[contains(text(),'FlexTable')]")).trim();
         if(pluginName.equals("FlexTable")){

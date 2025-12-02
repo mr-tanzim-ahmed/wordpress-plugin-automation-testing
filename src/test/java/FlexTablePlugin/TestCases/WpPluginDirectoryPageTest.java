@@ -21,7 +21,7 @@ public class WpPluginDirectoryPageTest extends BaseTest{
                 .goTo(InstalledPluginsPage.class)
                         .activatePlugin();
 
-        Assert.assertTrue(pluginPage.isPluginActivatedFromInstalledPluginsPage());
+        Assert.assertTrue(pluginPage.isPluginActivatedFromInstalledPluginsPage(),"Plugin activated successfully from WP Plugin Directory Page");
         
     }
 }

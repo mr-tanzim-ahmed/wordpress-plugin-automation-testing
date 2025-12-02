@@ -2,7 +2,6 @@ package FlexTablePlugin.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import FlexTablePlugin.Pages.*;
 
 public class DashboardPage extends BasePage{
     public DashboardPage(WebDriver driver) {
@@ -20,6 +19,9 @@ public class DashboardPage extends BasePage{
     public boolean isPluginMenuPresent() {
         return getWebElements(By.xpath("//div[normalize-space()='Plugins']")).size() > 0;
     }
-
+    public FlexTableDashboard clickFlexTableFromMenu() {
+        clickElement(By.xpath("//div[normalize-space()='FlexTable']"));
+        return goTo(FlexTableDashboard.class);
+    }
 
 }

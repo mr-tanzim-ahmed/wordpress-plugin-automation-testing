@@ -5,10 +5,9 @@ import FlexTablePlugin.Pages.Page;
 import FlexTablePlugin.Util.FlexTablePluginUtil;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,11 +39,9 @@ import java.util.Properties;
             switch (browserName.toLowerCase()) {
 
                 case "firefox":
-                    WebDriverManager.chromedriver().setup();
                     driver = new FirefoxDriver();
                     break;
                 case "chrome":
-                    WebDriverManager.firefoxdriver().setup();
                     driver = new ChromeDriver();
                     break;
                 default:

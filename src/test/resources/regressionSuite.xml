@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
+    <listeners>
+        <listener class-name="FlexTablePlugin.Report.TestListener"></listener>
+    </listeners>
     <test name="Automation Test Cases" preserve-order="true">
         <classes>
             <!-- Test Case 1 -->
             <class name="FlexTablePlugin.TestCases.AdminLoginPageTest" />
-
-            <!-- Test Case 2 -->
             <class name="FlexTablePlugin.TestCases.DashboardPageTest" />
 
-            <!-- Test Case 4 -->
+            <!-- Test Case 2 -->
             <class name="FlexTablePlugin.TestCases.WpPluginDirectoryPageTest" />
-
-            <!-- Test Case 5 -->
             <class name="FlexTablePlugin.TestCases.InstalledPluginsPageTest" />
+
+            <!-- Test Case 3 -->
+            <class name="FlexTablePlugin.TestCases.FlexTableDashboardTest" />
+
+            <!-- Test Case 4 -->
         </classes>
     </test>
 </suite>

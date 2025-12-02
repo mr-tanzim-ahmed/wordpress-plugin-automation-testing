@@ -4,9 +4,8 @@
     <test name="Test Cases" preserve-order="true">
         <classes>
 
-            <class name="FlexTablePlugin.TestCases.WpPluginDirectoryPageTest" />
 
-            <class name="FlexTablePlugin.TestCases.InstalledPluginsPageTest" />
+            <class name="FlexTablePlugin.TestCases.FlexTableDashboardTest" />
 
         </classes>
     </test>

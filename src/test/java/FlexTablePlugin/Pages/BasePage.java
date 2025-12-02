@@ -1,6 +1,5 @@
 package FlexTablePlugin.Pages;
 
-import FlexTablePlugin.TestCases.BaseTest;
 import com.aventstack.extentreports.Status;
 import FlexTablePlugin.Report.*;
 import org.openqa.selenium.By;
@@ -8,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -90,6 +90,7 @@ public class BasePage extends Page {
     public void waitForElementToBeVisible(By selector) {
         wait.until(ExpectedConditions.visibilityOf(getWebElement(selector)));
     }
+    public static ArrayList<String> copyPasteData = new ArrayList<>();
 
     public void addInfo(String message) {
         if (ReportTestManager.getTest() != null) {

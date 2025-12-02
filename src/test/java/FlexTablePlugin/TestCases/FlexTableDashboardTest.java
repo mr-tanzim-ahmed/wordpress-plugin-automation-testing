@@ -21,5 +21,11 @@ Expected Result:
                .clickFlexTableFromMenu();
        Assert.assertTrue(flexTableDashboard.isItFlexTableDashboardPage(),"Check FlexTable Dashboard page is loaded correctly");
     }
+    @Test(priority = 2)  //FlexTable Dashboard UI is displayed without errors.
+    public void validateFlexTableDashboardUiDisplayed(){
+        FlexTableDashboard flexTableDashboard = page.goTo(FlexTableDashboard.class);
+
+        Assert.assertTrue(flexTableDashboard.isFlexTableDashboardUiDisplayed(),"Check FlexTable Dashboard UI is displayed");
+    }
 
 }

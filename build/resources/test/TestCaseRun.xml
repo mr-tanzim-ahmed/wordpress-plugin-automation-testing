@@ -4,9 +4,7 @@
     <test name="Test Cases" preserve-order="true">
         <classes>
 
-
-            <class name="FlexTablePlugin.TestCases.FlexTableDashboardTest" />
-
+            <class name="FlexTablePlugin.TestCases.Draft" />
         </classes>
     </test>
 </suite>

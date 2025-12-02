@@ -18,6 +18,8 @@
             <class name="FlexTablePlugin.TestCases.FlexTableDashboardTest" />
 
             <!-- Test Case 4 -->
+            <class name="FlexTablePlugin.TestCases.FlexTableDashboardTest" />
+            <class name="FlexTablePlugin.TestCases.CreateNewTablePageTest" />
         </classes>
     </test>
 </suite>

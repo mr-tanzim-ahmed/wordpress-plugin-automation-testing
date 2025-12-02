@@ -23,5 +23,9 @@ public class DashboardPage extends BasePage{
         clickElement(By.xpath("//div[normalize-space()='FlexTable']"));
         return goTo(FlexTableDashboard.class);
     }
+    public PagesPage clickPagesFromMenu() {
+        clickElement(By.xpath("//a[@class='wp-has-submenu wp-has-current-submenu wp-menu-open menu-top menu-icon-page']"));
+        return goTo(PagesPage.class);
+    }
 
 }

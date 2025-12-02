@@ -12,29 +12,13 @@ public class WpPluginDirectoryPage extends BasePage{
     }
     public  String pluginFileName = properties.getProperty("pluginName");
 
-    public  WpPluginDirectoryPage searchPluginInWPDirectoryPage(){
-        getWebElement(By.xpath("//input[@id='search-plugins']")).sendKeys("FlexTable");
-        waitForElementToBeVisible(By.xpath("//a[contains(text(),'FlexTable – Live WP table sync with Google Sheets')]"));
-        return this;
-    }
-    public WpPluginDirectoryPage installPluginInWPDirectoryPage(){
-        searchPluginInWPDirectoryPage();
-        waitForElementToBeVisible(By.xpath("//a[@aria-label='Install FlexTable – Live WP table sync with Google Sheets 3.19.1 now']"));
-        clickElement(By.xpath("//a[@aria-label='Install FlexTable – Live WP table sync with Google Sheets 3.19.1 now']")); //install now button
-        setLoadingTime(2);
-        return this;
-    }
-    public WpPluginDirectoryPage activatePluginFromWPDirectoryPage(){
-        waitForElementToBeVisible(By.xpath("//a[normalize-space()='Activate Plugin']"));
-        clickElement(By.xpath("//a[normalize-space()='Activate Plugin']"));
-        setLoadingTime(1);
-        return this;
-    }
 
-    public void searchPlugin(){
-        waitForElementToBeVisible(By.cssSelector("#search-plugins"));
-        setInput(By.cssSelector("#search-plugins"),pluginFileName);
-        setLoadingTime(2);
+
+    public WpPluginDirectoryPage searchPlugin(){
+        waitForElementToBeVisible(By.xpath("//input[@id='search-plugins']"));
+        setInput(By.xpath("//input[@id='search-plugins']"),"FlexTable");
+        waitForElementToBeVisible(By.xpath("//a[@aria-label='Install FlexTable – Live WP table sync with Google Sheets 3.19.1 now']"));
+        return this;
     }
 
     public WpPluginDirectoryPage installPluginFromWPDirectoryPage(){
@@ -45,9 +29,20 @@ public class WpPluginDirectoryPage extends BasePage{
         return this;
     }
 
-
+/*
+    public WpPluginDirectoryPage activatePluginFromWPDirectoryPage(){
+        waitForElementToBeVisible(By.xpath("//a[normalize-space()='Activate Plugin']"));
+        clickElement(By.xpath("//a[normalize-space()='Activate Plugin']"));
+        setLoadingTime(1);
+        return this;
+    }
+*/
+    public InstalledPluginsPage clickPluginsInLeftMenu(){
+        clickElement(By.xpath("//div[@class='wp-menu-image dashicons-before dashicons-admin-plugins']"));
+        return goTo(InstalledPluginsPage.class);
+    }
+    //
     public WpPluginDirectoryPage uploadPluginsFile(String pluginName) {
-
 
         File pluginFile = new File(System.getProperty("user.dir") + "/src/test/resources/" + pluginFileName);
         String absolutePath = pluginFile.getAbsolutePath();

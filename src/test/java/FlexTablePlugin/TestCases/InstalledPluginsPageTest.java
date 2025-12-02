@@ -3,8 +3,6 @@ package FlexTablePlugin.TestCases;
 import FlexTablePlugin.Pages.AdminLoginPage;
 
 import FlexTablePlugin.Pages.*;
-import FlexTablePlugin.Pages.InstalledPluginsPage;
-import FlexTablePlugin.Pages.WpPluginDirectoryPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,18 +17,9 @@ public class InstalledPluginsPageTest extends BaseTest {
     }
 
     //Install FlexTable plugin regular way
-    @Test (priority = 2)
-    public void pluginInstallShouldBeSuccessful(){
-        WpPluginDirectoryPage pluginPage = page.goTo(InstalledPluginsPage.class)
-                .clickAddPlugin()
-                .installPluginInWPDirectoryPage();
 
-        InstalledPluginsPage installedPluginsPage = page.goTo(InstalledPluginsPage.class);
 
-        Assert.assertTrue(installedPluginsPage.isPluginInstalled());
-    }
-
-    @Test(priority = 3)
+    @Test(priority = 2)
     //Validation of plugin is active
     public void validateFlexTablePluginIsActive() {
         InstalledPluginsPage installedPluginsPage = page.goTo(InstalledPluginsPage.class);

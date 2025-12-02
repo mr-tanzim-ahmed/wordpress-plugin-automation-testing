@@ -10,9 +10,10 @@ public class DashboardPageTest extends BaseTest {
     @Test(priority = 1)
     public void checkDashboardPage(){
 
-        DashboardPage dashboardPage = page.goTo(AdminLoginPage.class)
-                        .doLogin(getUserNameOrEmail(),getPassword())
-                                .goTo(DashboardPage.class);
+        page.goTo(AdminLoginPage.class)
+                .doLogin(getUserNameOrEmail(), getPassword());
+        DashboardPage dashboardPage = page
+                .goTo(DashboardPage.class);
         Assert.assertTrue(dashboardPage.isItDashboardPage());
     }
 }

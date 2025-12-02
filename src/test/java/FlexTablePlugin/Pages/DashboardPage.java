@@ -21,4 +21,5 @@ public class DashboardPage extends BasePage{
         return getWebElements(By.xpath("//div[normalize-space()='Plugins']")).size() > 0;
     }
 
+
 }

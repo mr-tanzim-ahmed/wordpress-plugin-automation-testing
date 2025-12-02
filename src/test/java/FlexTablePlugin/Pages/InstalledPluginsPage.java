@@ -23,11 +23,26 @@ public class InstalledPluginsPage extends BasePage{
         return goTo(WpPluginDirectoryPage.class);
     }
 
-    public void activatePlugin(){
+    public InstalledPluginsPage activatePlugin(){
+
         clickElement(By.xpath("//a[@id='activate-sheets-to-wp-table-live-sync']"));
+        clickElement(By.xpath("//div[@class='wp-menu-image dashicons-before dashicons-admin-plugins']"));
         setLoadingTime(1);
+        return this;
     }
 
+    public boolean isPluginActivatedFromInstalledPluginsPage(){
+        String dactivateText = getElementsText(By.xpath("//a[@id='deactivate-sheets-to-wp-table-live-sync']")).trim();
+        if(dactivateText.equals("Deactivate")){
+            return true;
+        }
+        return false;
+    }
+
+    public  InstalledPluginsPage clickPluginsInLeftMenuAtInstalledPluginPage(){
+        clickElement(By.xpath("//div[@class='wp-menu-image dashicons-before dashicons-admin-plugins']"));
+        return this;
+    }
 
     public boolean isPluginInstalled(){
         String pluginName = getElementsText(By.xpath("//td[@class='plugin-title column-primary']//strong[contains(text(),'FlexTable')]")).trim();

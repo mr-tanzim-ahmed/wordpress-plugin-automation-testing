@@ -9,7 +9,10 @@
             <!-- Test Case 2 -->
             <class name="FlexTablePlugin.TestCases.DashboardPageTest" />
 
-            <!-- Test Case 2 -->
+            <!-- Test Case 4 -->
+            <class name="FlexTablePlugin.TestCases.WpPluginDirectoryPageTest" />
+
+            <!-- Test Case 5 -->
             <class name="FlexTablePlugin.TestCases.InstalledPluginsPageTest" />
         </classes>
     </test>

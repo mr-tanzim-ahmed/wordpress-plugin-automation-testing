@@ -2,6 +2,10 @@ package FlexTablePlugin.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FlexTableDashboard extends BasePage{
     public FlexTableDashboard(WebDriver driver) {
@@ -30,8 +34,19 @@ public class FlexTableDashboard extends BasePage{
         return getTableName;
     }
 
-    public void copyTableShortcode(){
+    public FlexTableDashboard copyTableShortcode(){
         copyPasteData.add(getElementsText(By.cssSelector("button[class*='copy-shortcode btn-shortcode']")).trim());
+        return this;
+    }
+
+    public FlexTableDashboard clickDeleteTable(){
+        clickElement(By.xpath("//button[@class='table-delete']"));
+        return this;
+    }
+
+    public PagesPage clickPagesFromMenu(){
+        clickElement(By.xpath("//a[@class='wp-has-submenu wp-not-current-submenu menu-top menu-icon-page']"));
+        return goTo(PagesPage.class);
     }
 
 }

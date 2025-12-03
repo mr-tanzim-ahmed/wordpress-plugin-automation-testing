@@ -5,6 +5,7 @@ import FlexTablePlugin.Report.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
@@ -90,6 +91,17 @@ public class BasePage extends Page {
     public void waitForElementToBeVisible(By selector) {
         wait.until(ExpectedConditions.visibilityOf(getWebElement(selector)));
     }
+
+    @Override
+    public String homePageUrl(String url){
+        return url.trim();
+    }
+    @Override
+    public void openNewTabAndVisit(String url){
+        driver.switchTo().newWindow(WindowType.TAB);
+        driver.get(url);
+    }
+
     public static ArrayList<String> copyPasteData = new ArrayList<>();
 
     public void addInfo(String message) {

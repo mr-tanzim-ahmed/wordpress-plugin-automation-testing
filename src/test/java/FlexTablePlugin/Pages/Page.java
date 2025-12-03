@@ -4,6 +4,7 @@ import FlexTablePlugin.Util.FlexTablePluginUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.lang.reflect.InvocationTargetException;
@@ -11,13 +12,14 @@ import java.time.Duration;
 import java.util.List;
 
 public abstract class Page {
-    static WebDriver driver;
-    WebDriverWait wait;
+    public static WebDriver driver;
+    public WebDriverWait wait;
+    public Actions actions;
 
     public Page(WebDriver driver){
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(FlexTablePluginUtil.WAIT_TIME));
-
+        this.actions = new Actions(driver);
     }
 
     public abstract WebElement getWebElement(By selector);
@@ -37,6 +39,10 @@ public abstract class Page {
     public abstract void clearInputText(By selector);
 
     public abstract String getCurrentPageURL();
+
+    public abstract String homePageUrl(String url);
+
+    public abstract void openNewTabAndVisit(String url);
 
     public abstract void waitForElementToBeVisible(By selector);
     //Returns an obj of any class that is extended by BasePage

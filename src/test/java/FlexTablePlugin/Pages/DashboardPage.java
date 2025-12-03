@@ -14,7 +14,7 @@ public class DashboardPage extends BasePage{
         return goTo(InstalledPluginsPage.class);
     }
     public boolean isItDashboardPage(){
-        return getWebElements(By.cssSelector("#adminmenuwrap")).size() > 0;
+        return getWebElements(By.xpath("//ul[@id='adminmenu']")).size() > 0;
     }
     public boolean isPluginMenuPresent() {
         return getWebElements(By.xpath("//div[normalize-space()='Plugins']")).size() > 0;

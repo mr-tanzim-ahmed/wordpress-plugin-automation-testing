@@ -4,12 +4,11 @@
     <test name="Test Cases" preserve-order="true">
         <classes>
 
+            <!-- Test Case 9 -->
             <class name="FlexTablePlugin.TestCases.TestPageTest" >
                 <methods>
-                    <include name="confirmEntryInfoDisplaysCorrectly" />
-                    <include name="validatePaginationDisplaysCorrectly" />
-                    <include name="checkPaginationFunctionsOk" />
-                    <include name="validateNoTableLayoutIssues" />
+                    <include name="checkAfterTableDeletedTableNotDisplay" />
+                    <include name="checkAfterDeletedTableShowsProperEmptyMessage" />
                 </methods>
             </class>
 

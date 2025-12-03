@@ -47,6 +47,9 @@ public class TestPage extends BasePage{
         }
         return false;
     }
+    public String deletedTableEmptyMessageCheck(){
+        return getElementsText(By.xpath("//b[contains(text(),'Table maybe deleted or can’t be loaded.')]")).trim();
+    }
 
 }
 

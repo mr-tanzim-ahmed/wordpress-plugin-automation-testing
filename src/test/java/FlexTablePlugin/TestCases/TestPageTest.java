@@ -86,4 +86,29 @@ public class TestPageTest extends BaseTest{
         Assert.assertTrue(testPage.isTableDisplayedInTestPage(),"Check layout displays issues.");
     }
 
+
+
+
+
+
+    //Test Case 9:
+    //Table does not display.
+    @Test
+    public void checkAfterTableDeletedTableNotDisplay(){
+        TestPage testPage = page.goTo(AdminLoginPage.class)
+                .doLogin(getUserNameOrEmail(), getPassword())
+                .goTo(DashboardPage.class)
+                .clickFlexTableFromMenu()
+                .clickDeleteTable()
+                .clickPagesFromMenu()
+                .visitCreatedTestPage(targetPage);
+        Assert.assertFalse(testPage.isTableDisplayedInTestPage(),"Table should not displayed");
+    }
+    //Proper error or empty state message appears.
+    @Test void checkAfterDeletedTableShowsProperEmptyMessage(){
+        TestPage testPage = page.goTo(TestPage.class);
+        Assert.assertEquals(testPage.deletedTableEmptyMessageCheck(),"Table maybe deleted or can’t be loaded.");
+    }
+
+
 }

@@ -56,10 +56,6 @@ public class FlexTableDashboard extends BasePage{
         return id;
     }
 
-    public FlexTableDashboard clickDeleteTable(){
-        clickElement(By.xpath("//button[@class='table-delete']"));
-        return this;
-    }
     public FlexTableDashboard clickEditTable(){
         clickElement(By.xpath("//div[@class='tooltip-wrapper']//a[@class='table-edit']"));
         return this;
@@ -99,7 +95,12 @@ public class FlexTableDashboard extends BasePage{
         clickElement(By.cssSelector("#hide-pagination"));
         return this;
     }
-
+    public FlexTableDashboard clickDeleteTable(){
+        clickElement(By.xpath("//button[@class='table-delete']"));
+        clickElement(By.xpath("//button[normalize-space()='Delete']"));//popup delete
+        setLoadingTime(1);
+        return this;
+    }
     public PagesPage clickPagesFromMenu(){
         clickElement(By.xpath("//a[@class='wp-has-submenu wp-not-current-submenu menu-top menu-icon-page']"));
         return goTo(PagesPage.class);

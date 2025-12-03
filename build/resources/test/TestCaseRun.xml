@@ -4,7 +4,15 @@
     <test name="Test Cases" preserve-order="true">
         <classes>
 
-            <class name="FlexTablePlugin.TestCases.PagesPageTest" />
+            <class name="FlexTablePlugin.TestCases.TestPageTest" >
+                <methods>
+                    <include name="confirmEntryInfoDisplaysCorrectly" />
+                    <include name="validatePaginationDisplaysCorrectly" />
+                    <include name="checkPaginationFunctionsOk" />
+                    <include name="validateNoTableLayoutIssues" />
+                </methods>
+            </class>
+
         </classes>
     </test>
 </suite>

@@ -2,6 +2,7 @@ package FlexTablePlugin.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class FlexTableDashboard extends BasePage{
     public FlexTableDashboard(WebDriver driver) {
@@ -55,9 +56,47 @@ public class FlexTableDashboard extends BasePage{
         return id;
     }
 
-
     public FlexTableDashboard clickDeleteTable(){
         clickElement(By.xpath("//button[@class='table-delete']"));
+        return this;
+    }
+    public FlexTableDashboard clickEditTable(){
+        clickElement(By.xpath("//div[@class='tooltip-wrapper']//a[@class='table-edit']"));
+        return this;
+    }
+    public FlexTableDashboard clickTableCustomization(){
+        clickElement(By.xpath("//span[normalize-space()='3. Table customization']"));
+        return this;
+    }
+    public FlexTableDashboard clickSaveChangesButton(){
+        clickElement(By.xpath("//button[normalize-space()='Save changes']"));
+        setLoadingTime(1);
+        return this;
+    }
+    //Go to Table Customization → Layout
+    // Enable 'Show Table Title'
+    public FlexTableDashboard clickShowTableTitle(){
+        clickElement(By.xpath("//input[@id='show-title']"));
+        return this;
+    }
+    //Go to Table Customization → Layout
+    //Enable 'Show Table Description Below the Table'
+    public FlexTableDashboard clickShowTableDescriptionAndSelectBelow(){
+        clickElement(By.xpath("//input[@id='show-title']"));
+        Select select = new Select(getWebElement(By.xpath("//select[@id='description-position']")));
+        select.selectByVisibleText("below");
+        return this;
+    }
+    //Go to Table Customization → Layout
+    // Go to Layout → Table Bottom Elements.
+    //Enable Show Entry Info
+    public FlexTableDashboard clickShowEntryInfo(){
+        clickElement(By.cssSelector("#hide-entry-info"));
+        return this;
+    }
+    //Show Pagination
+    public FlexTableDashboard clickShowPagination(){
+        clickElement(By.cssSelector("#hide-pagination"));
         return this;
     }
 

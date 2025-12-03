@@ -20,6 +20,34 @@
             <!-- Test Case 4 -->
             <class name="FlexTablePlugin.TestCases.FlexTableDashboardTest" />
             <class name="FlexTablePlugin.TestCases.CreateNewTablePageTest" />
+
+            <!-- Test Case 5 -->
+            <class name="FlexTablePlugin.TestCases.TestPageTest" >
+                <methods>
+                    <include name="verifyFlexTableShortcodeInPagesPage" />
+                    <include name="verifyTableDataAndHeaders" />
+                </methods>
+            </class>
+            <class name="FlexTablePlugin.TestCases.ValidateRandomTableDataFromTestPageTest" />
+
+            <!-- Test Case 6 -->
+            <class name="FlexTablePlugin.TestCases.TestPageTest" >
+                <methods>
+                    <include name="verifyTableTitleShowsTheTestPages" />
+                    <include name="verifyTableDescriptionShowsTheTestPages" />
+
+                </methods>
+            </class>
+            <!-- Test Case 7 -->
+            <class name="FlexTablePlugin.TestCases.TestPageTest" >
+                <methods>
+                    <include name="confirmEntryInfoDisplaysCorrectly" />
+                    <include name="validatePaginationDisplaysCorrectly" />
+                    <include name="checkPaginationFunctionsOk" />
+                    <include name="validateNoTableLayoutIssues" />
+                </methods>
+            </class>
+
         </classes>
     </test>
 </suite>

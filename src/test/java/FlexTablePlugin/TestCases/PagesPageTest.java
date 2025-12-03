@@ -18,6 +18,6 @@ public class PagesPageTest extends BaseTest{
                 .clickPagesFromMenu()
                 .createNewPageAndPublish(properties.getProperty("pageTitle"))
                 .visitCreatedTestPage(targetPage);
-        Assert.assertTrue(pages.isTableDisplayedInTestPage(),"Flex Table is displayed in the Page");
+        Assert.assertTrue(pages.isTableDisplayedInTestPage(),"FlexTable is displayed in the Page");
     }
 }

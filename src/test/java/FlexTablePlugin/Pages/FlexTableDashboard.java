@@ -2,10 +2,6 @@ package FlexTablePlugin.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FlexTableDashboard extends BasePage{
     public FlexTableDashboard(WebDriver driver) {
@@ -33,11 +29,32 @@ public class FlexTableDashboard extends BasePage{
         String getTableName = getElementsText(By.cssSelector("a[class='table-edit'] h4[class='swptls-title h4']")).trim();
         return getTableName;
     }
+    public FlexTableDashboard copyTableShortcode() {
+        // Get the last 2 digits from the button's href safely
+        String id = getTableId();
 
-    public FlexTableDashboard copyTableShortcode(){
-        copyPasteData.add(getElementsText(By.cssSelector("button[class*='copy-shortcode btn-shortcode']")).trim());
+        // Build the shortcode using StringBuffer
+        StringBuffer shortcode = new StringBuffer();
+        shortcode.append("[gswpts_table id=\"")
+                .append(id)
+                .append("\"]");
+        System.out.println("Shortcode: " + shortcode.toString());
+        copyPasteData.add(shortcode.toString());
+
         return this;
     }
+
+    public String getTableId(){
+        String text = getElementsText(By.xpath("//p[@class='swptls-title p']"));
+        System.out.println("Table ID: " + text);
+        String id = "";
+        if (text.length() >= 2) {
+            id = text.substring(text.length() - 2);
+            return id;
+        }
+        return id;
+    }
+
 
     public FlexTableDashboard clickDeleteTable(){
         clickElement(By.xpath("//button[@class='table-delete']"));

@@ -2,6 +2,7 @@ package FlexTablePlugin.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class TestPage extends BasePage{
     public TestPage(WebDriver driver) {
@@ -49,9 +50,20 @@ public class TestPage extends BasePage{
         String actual = getCellValue(row, col);
         return actual.equalsIgnoreCase(expected.trim());
     }
+    public String checkShowEntries() {
+        return  selectElement(By.cssSelector("select[name='create_tables_length']")).getFirstSelectedOption().getText().trim();
+    }
+    public String getTableHeight() {
+        By selector = By.xpath("//div[@class='dataTables_scrollBody']");
+        return getWebElement(selector).getCssValue("height").trim();
+    }
 
     public String deletedTableEmptyMessageCheck(){
         return getElementsText(By.xpath("//b[contains(text(),'Table maybe deleted or can’t be loaded.')]")).trim();
+    }
+    public DashboardPage clickAndGoDashboard(){
+        clickElement(By.xpath("//li[@id='wp-admin-bar-wp-logo']"));
+        return goTo(DashboardPage.class);
     }
 
 }

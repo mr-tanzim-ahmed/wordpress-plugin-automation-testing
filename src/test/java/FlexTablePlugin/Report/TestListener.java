@@ -20,7 +20,6 @@ public class TestListener implements ITestListener {
     @Override
     public void onStart(ITestContext iTestContext) {
         System.out.println("I am in onStart method " + iTestContext.getName());
-        // iTestContext.setAttribute("WebDriver", this.getWebDriver());
     }
 
     // After ending all tests, below method runs.

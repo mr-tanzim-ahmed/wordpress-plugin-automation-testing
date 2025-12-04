@@ -5,10 +5,10 @@ import org.testng.annotations.Test;
 import FlexTablePlugin.Pages.*;
 
 import static FlexTablePlugin.Pages.ValidateRandomTableDataFromTestPage.tableCellData;
-import static FlexTablePlugin.TestCases.TestPageTest.targetPage;
+
 
 public class ValidateRandomTableDataFromTestPageTest extends BaseTest {
-
+    public String targetPage = properties.getProperty("homePageURL")+properties.getProperty("testPageSlug");
 
     @Test
     public void matchGoogleSheetDataToTestPageTable() throws Exception {

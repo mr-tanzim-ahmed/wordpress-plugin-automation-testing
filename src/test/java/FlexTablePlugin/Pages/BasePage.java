@@ -69,11 +69,14 @@ public class BasePage extends Page {
         String text = getWebElement(selector).getText();
         return text;
     }
-
     @Override
-    public void selectElement(By selector, String visibleText) {
+    public Select selectElement(By selector){
         Select select = new Select(getWebElement(selector));
-        select.selectByVisibleText(visibleText);
+        return select;
+    }
+    @Override
+    public void selectElementFromVisibleText(By selector, String visibleText) {
+        selectElement(selector).selectByVisibleText(visibleText);
     }
     @Override
     public String getCurrentPageURL(){
@@ -88,7 +91,10 @@ public class BasePage extends Page {
             throw new RuntimeException(e);
         }
     }
-
+    @Override
+    public void goToTargetPage(String url){
+        driver.get(url);
+    }
     @Override
     public void waitForElementToBeVisible(By selector) {
         wait.until(ExpectedConditions.visibilityOf(getWebElement(selector)));
@@ -105,7 +111,9 @@ public class BasePage extends Page {
         setLoadingTime(2);
     }
 
-
+    public String getCssAttribute(By selector,String cssPropertyName){
+        return getWebElement(selector).getCssValue(cssPropertyName);
+    }
     public void addInfo(String message) {
         if (ReportTestManager.getTest() != null) {
             ReportTestManager.getTest().log(Status.INFO, message);

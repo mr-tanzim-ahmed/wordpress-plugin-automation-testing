@@ -105,10 +105,15 @@ public class FlexTableDashboard extends BasePage{
         clickElement(By.xpath("//button[normalize-space()='Styling']"));
         return this;
     }
-    public FlexTableDashboard selectValueforRowsToShowPerPage(String value){
-        selectElement(By.cssSelector("#rows-per-page"),value);
+    public FlexTableDashboard selectValuesRowsToShowPerPage(String value){
+        selectElementFromVisibleText(By.cssSelector("#rows-per-page"),value);
         return this;
     }
+    public FlexTableDashboard selectTableHeight(String heightValue){
+        selectElementFromVisibleText(By.cssSelector("#table_height"),heightValue);
+        return this;
+    }
+
     public PagesPage clickPagesFromMenu(){
         clickElement(By.xpath("//a[@class='wp-has-submenu wp-not-current-submenu menu-top menu-icon-page']"));
         return goTo(PagesPage.class);

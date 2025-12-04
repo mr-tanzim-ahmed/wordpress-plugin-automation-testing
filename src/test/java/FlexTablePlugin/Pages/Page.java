@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.lang.reflect.InvocationTargetException;
@@ -34,7 +35,8 @@ public abstract class Page {
 
     public abstract void setLoadingTime(int seconds);
 
-    public abstract void selectElement(By selector, String visibleText);
+    public abstract void selectElementFromVisibleText(By selector, String visibleText);
+    public abstract Select selectElement(By selector);
 
     public abstract void clearInputText(By selector);
 
@@ -42,7 +44,10 @@ public abstract class Page {
 
     public abstract String homePageUrl(String url);
 
+    public abstract void goToTargetPage(String url);
+
     //public abstract String visitPage(String url);
+    public abstract String getCssAttribute(By selector,String cssPropertyName);
 
     public abstract void openNewTabAndVisit(String url);
 

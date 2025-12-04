@@ -34,13 +34,15 @@ public abstract class Page {
 
     public abstract void setLoadingTime(int seconds);
 
-    public abstract void selectElement(By selector);
+    public abstract void selectElement(By selector, String visibleText);
 
     public abstract void clearInputText(By selector);
 
     public abstract String getCurrentPageURL();
 
     public abstract String homePageUrl(String url);
+
+    //public abstract String visitPage(String url);
 
     public abstract void openNewTabAndVisit(String url);
 

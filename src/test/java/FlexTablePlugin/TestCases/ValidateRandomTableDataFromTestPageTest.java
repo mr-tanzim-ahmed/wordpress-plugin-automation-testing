@@ -3,64 +3,63 @@ package FlexTablePlugin.TestCases;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import FlexTablePlugin.Pages.*;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
-public class ValidateRandomTableDataFromTestPageTest extends TestPageTest {
+import static FlexTablePlugin.Pages.ValidateRandomTableDataFromTestPage.tableCellData;
+import static FlexTablePlugin.TestCases.TestPageTest.targetPage;
+
+public class ValidateRandomTableDataFromTestPageTest extends BaseTest {
+
 
     @Test
     public void matchGoogleSheetDataToTestPageTable() throws Exception {
+        ValidateRandomTableDataFromTestPage validationPage = new ValidateRandomTableDataFromTestPage(driver);
 
-        DashboardPage login = page.goTo(AdminLoginPage.class)
-                .doLogin(getUserNameOrEmail(), getPassword());
-                driver.get(targetPage);
+        // Load CSV data
+        validationPage.getDataFromRandomTableCells();
 
-        // GOOGLE SHEET CSV URL
-        String googleSheetCsvFile =
-                "https://docs.google.com/spreadsheets/d/11qRH9xUuglOTIZa7JnWTVBYuGMT32ZhFuJ5_xypApGM/export?format=csv";
-
-        // READ CSV FILE
-        URL url = new URL(googleSheetCsvFile);
-        BufferedReader reader =
-                new BufferedReader(new InputStreamReader(url.openStream()));
-
-        String line;
-        List<String[]> rows = new ArrayList<>();
-
-        while ((line = reader.readLine()) != null) {
-            rows.add(line.split(",")); // CSV parsing
-        }
-        reader.close();
-
-        String r1c1 = rows.get(1 - 1)[1 - 1];   // row 1, col 1
-        String r2c2 = rows.get(2 - 1)[2 - 1];   // row 2, col 2
-        String r3c3 = rows.get(3 - 1)[3 - 1];   // row 3, col 3
-        String r4c2 = rows.get(4 - 1)[2 - 1];   // row 4, col 2
+        String r2c1 = tableCellData.get("r2c1");
+        String r2c2 = tableCellData.get("r2c2");
+        String r3c1 = tableCellData.get("r3c1");
+        String r3c2 = tableCellData.get("r3c2");
         /*
-        System.out.println("CSV Values:");
-        System.out.println("Row1 Col1: " + r1c1);
-        System.out.println("Row2 Col2: " + r2c2);
-        System.out.println("Row3 Col3: " + r3c3);
-        System.out.println("Row4 Col2: " + r4c2);
+        System.out.println("===== CSV Table Cell Data =====");
+        System.out.println("Row 2, Col 1 → " + r2c1);
+        System.out.println("Row 2, Col 2 → " + r2c2);
+        System.out.println("Row 3, Col 1 → " + r3c1);
+        System.out.println("Row 3, Col 2 → " + r3c2);
+        System.out.println("================================");
         */
+        // Login and navigate
+        page.goTo(AdminLoginPage.class)
+                .doLogin(getUserNameOrEmail(), getPassword())
+                .goTo(DashboardPage.class)
+                .goTo(ValidateRandomTableDataFromTestPage.class)
+                .openNewTabAndVisit(targetPage);
 
-        driver.get(targetPage); // <-- replace
+        // Read values From Test Page (Page row = csv_row -1)
+        String pageR2C1 = validationPage.getCellValue(1, 1);
+        String pageR2C2 = validationPage.getCellValue(1, 2);
+        String pageR3C1 = validationPage.getCellValue(2, 1);
+        String pageR3C2 = validationPage.getCellValue(2, 2);
+/*
+        System.out.println("===== Debug Table Cell Data From Page =====");
+        System.out.println("Row 2, Col 1 → " + pageR2C1);
+        System.out.println("Row 2, Col 2 → " + pageR2C2);
+        System.out.println("Row 3, Col 1 → " + pageR3C1);
+        System.out.println("Row 3, Col 2 → " + pageR3C2);
+        System.out.println("============================================");
+*/
+        // Validate table cells
+        Assert.assertEquals(pageR2C1, r2c1,
+                "Match at Row 2 Column 1 → Sheet: " + r2c1 + " Page: " + pageR2C1);
 
-        TestPage page = new TestPage(driver);
+        Assert.assertEquals(pageR2C2, r2c2,
+                "Match at Row 2 Column 2 → Sheet: " + r2c2 + " Page: " + pageR2C2);
 
-        Assert.assertTrue(page.validateCell(1, 1, r1c1),
-                "Match Row 1 Column 1");
+        Assert.assertEquals(pageR3C1, r3c1,
+                "Match at Row 3 Column 1 → Sheet: " + r3c1 + " Page: " + pageR3C1);
 
-        Assert.assertTrue(page.validateCell(2, 2, r2c2),
-                "Match Row 2 Column 2");
-
-        Assert.assertTrue(page.validateCell(3, 3, r3c3),
-                "Match Row 3 Column 3");
-
-        Assert.assertTrue(page.validateCell(4, 2, r4c2),
-                "Match Row 4 Column 2");
+        Assert.assertEquals(pageR3C2, r3c2,
+                "Match at Row 3 Column 2 → Sheet: " + r3c2 + " Page: " + pageR3C2);
     }
 }

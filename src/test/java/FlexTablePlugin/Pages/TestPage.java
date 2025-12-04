@@ -22,14 +22,6 @@ public class TestPage extends BasePage{
     public boolean isTableDescriptionDisplayed(String tableDescription){
         return getWebElements(By.xpath("//p[@id='swptls-table-description']")).size() > 0;
     }
-    public String getCellValue(int row, int col) {
-        String xpath = "//table[@id='create_tables']//tr[" + row + "]/td[" + col + "]";
-        return driver.findElement(By.xpath(xpath)).getText().trim();
-    }
-
-    public boolean validateCell(int row, int col, String expected) {
-        return getCellValue(row, col).equalsIgnoreCase(expected.trim());
-    }
 
     public boolean isShowEntryInfoDisplayed(){
         setLoadingTime(1);
@@ -47,6 +39,17 @@ public class TestPage extends BasePage{
         }
         return false;
     }
+
+    public String getCellValue(int row, int col) {
+        String xpathLoc = "//table[@id='create_tables']//tr[" + row + "]/td[" + col + "]";
+        return getElementsText(By.xpath(xpathLoc)).trim();
+    }
+
+    public boolean validateCell(int row, int col, String expected) {
+        String actual = getCellValue(row, col);
+        return actual.equalsIgnoreCase(expected.trim());
+    }
+
     public String deletedTableEmptyMessageCheck(){
         return getElementsText(By.xpath("//b[contains(text(),'Table maybe deleted or can’t be loaded.')]")).trim();
     }

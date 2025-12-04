@@ -13,10 +13,10 @@ import static FlexTablePlugin.Pages.BasePage.copyPasteData;
 
 public class Draft extends BaseTest{
 
+    @Test
+    public  void testDemo() throws Exception {
 
-    public static void main(String args[]) throws Exception {
-
-        String googleSheetCsvFile = "https://docs.google.com/spreadsheets/d/11qRH9xUuglOTIZa7JnWTVBYuGMT32ZhFuJ5_xypApGM/export?format=csv";
+        String googleSheetCsvFile = properties.getProperty("googleSheetUrlCSVFormat");
 
         URL url = new URL(googleSheetCsvFile);
         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));

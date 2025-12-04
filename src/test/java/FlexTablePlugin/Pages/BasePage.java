@@ -7,13 +7,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
 public class BasePage extends Page {
-
+    public static ArrayList<String> copyPasteData = new ArrayList<>();
     public BasePage(WebDriver driver) {
         super(driver);
     }
@@ -70,8 +71,9 @@ public class BasePage extends Page {
     }
 
     @Override
-    public void selectElement(By selector) {
-
+    public void selectElement(By selector, String visibleText) {
+        Select select = new Select(getWebElement(selector));
+        select.selectByVisibleText(visibleText);
     }
     @Override
     public String getCurrentPageURL(){
@@ -100,9 +102,9 @@ public class BasePage extends Page {
     public void openNewTabAndVisit(String url){
         driver.switchTo().newWindow(WindowType.TAB);
         driver.get(url);
+        setLoadingTime(2);
     }
 
-    public static ArrayList<String> copyPasteData = new ArrayList<>();
 
     public void addInfo(String message) {
         if (ReportTestManager.getTest() != null) {

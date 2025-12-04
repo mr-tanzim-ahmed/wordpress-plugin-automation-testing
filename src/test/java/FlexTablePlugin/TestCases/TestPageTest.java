@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class TestPageTest extends BaseTest{
     //Confirm the table renders correctly on the frontend using its shortcode.
-    public  String targetPage = (properties.getProperty("homePageURL")+properties.getProperty("testPageTitle").replace(" ","-")).toLowerCase().trim();
+    public static String targetPage = (properties.getProperty("homePageURL")+properties.getProperty("testPageTitle").replace(" ","-")).toLowerCase().trim();
     //Test Case 5:
     @Test(priority = 1)
     public void verifyFlexTableShortcodeInPagesPage() {

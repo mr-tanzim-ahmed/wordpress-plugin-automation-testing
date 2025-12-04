@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
+    <listeners>
+        <listener class-name="FlexTablePlugin.Report.TestListener"></listener>
+    </listeners>
     <test name="Test Cases" preserve-order="true">
         <classes>
 
-            <!-- Test Case 9 -->
-            <class name="FlexTablePlugin.TestCases.TestPageTest" >
+            <class name="FlexTablePlugin.TestCases.ValidateRandomTableDataFromTestPageTest" >
                 <methods>
-                    <include name="checkAfterTableDeletedTableNotDisplay" />
-                    <include name="checkAfterDeletedTableShowsProperEmptyMessage" />
+                    <include name="matchGoogleSheetDataToTestPageTable" />
                 </methods>
             </class>
 

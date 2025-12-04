@@ -29,6 +29,11 @@
                 </methods>
             </class>
             <class name="FlexTablePlugin.TestCases.ValidateRandomTableDataFromTestPageTest" />
+            <class name="FlexTablePlugin.TestCases.ValidateRandomTableDataFromTestPageTest" >
+                <methods>
+                    <include name="matchGoogleSheetDataToTestPageTable" />
+                </methods>
+            </class>
 
             <!-- Test Case 6 -->
             <class name="FlexTablePlugin.TestCases.TestPageTest" >
@@ -44,9 +49,12 @@
                     <include name="confirmEntryInfoDisplaysCorrectly" />
                     <include name="validatePaginationDisplaysCorrectly" />
                     <include name="checkPaginationFunctionsOk" />
-                    <include name="validateNoTableLayoutIssues" />checkAfterTableDeletedTableNotDisplay
+                    <include name="validateNoTableLayoutIssues" />
                 </methods>
             </class>
+            <!-- Test Case 8 -->
+            <class name="FlexTablePlugin.TestCases." />
+
 
 
             <!-- Test Case 9 -->

@@ -1,4 +1,4 @@
-package FlexTablePlugin.Report;
+package WooCommerce.Report;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
@@ -20,7 +20,7 @@ public class ReportManager {
         if (extent == null) {
             String workingDir = System.getProperty("user.dir");
             String reportName = "Report.html";
-            path = "/build/extendReportForFlexTable/" + reportName;
+            path = "/build/extendReportForWoocommerce/" + reportName;
             ExtentSparkReporter htmlReporter = new ExtentSparkReporter(workingDir + path);
             htmlReporter.config().setTheme(Theme.STANDARD);
             htmlReporter.config().setDocumentTitle("Report");

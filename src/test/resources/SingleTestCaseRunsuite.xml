@@ -8,7 +8,13 @@
 
     <test name="Test Cases" preserve-order="true">
         <classes>
+            <class name="FlexTablePlugin.TestCases.TestPageTest" >
+                <methods>
+                    <include name="verifyTableTitleShowsTheTestPages" />
+                    <include name="verifyTableDescriptionShowsTheTestPages" />
 
+                </methods>
+            </class>
 
         <!-- Test Case 8 -->
         <class name="FlexTablePlugin.TestCases.TestPageTest">

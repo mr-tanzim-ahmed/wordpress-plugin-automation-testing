@@ -3,21 +3,23 @@ package FlexTablePlugin.TestCases;
 import FlexTablePlugin.Pages.AdminLoginPage;
 
 import FlexTablePlugin.Pages.*;
+import config.EnvManager;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class InstalledPluginsPageTest extends BaseTest {
     @Test(priority = 1)
     public void checkInstalledPluginsPage() {
-        page.goTo(AdminLoginPage.class)
-                .doLogin(getUserNameOrEmail(), getPassword());
+        DashboardPage installedPluginsPage = page.goTo(AdminLoginPage.class)
+                .doLogin(EnvManager.userName(), getPassword());
+
         InstalledPluginsPage pluginPage = page.goTo(DashboardPage.class)
                 .clickPluginsInDashboard();
+
         Assert.assertTrue(pluginPage.isItPluginPage());
     }
 
     //Install FlexTable plugin regular way
-
 
     @Test(priority = 2)
     //Validation of plugin is active

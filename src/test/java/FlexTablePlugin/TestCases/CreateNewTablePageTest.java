@@ -1,6 +1,7 @@
 package FlexTablePlugin.TestCases;
 
 import FlexTablePlugin.Pages.*;
+import config.EnvManager;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,7 +14,7 @@ public class CreateNewTablePageTest extends BaseTest {
                 .doLogin(getUserNameOrEmail(), getPassword())
                 .clickFlexTableFromMenu()
                 .clickCreateNewTableButton()
-                .inputGoogleSheetUrl(properties.getProperty("googleSheetURL"))
+                .inputGoogleSheetUrl(EnvManager.googleSheetURL())
                 .clickCreateTableFromUrlButton()
                 .inputTableTitle(properties.getProperty("tableTitle"))
                 .inputTableDescription(properties.getProperty("tableDescription"))

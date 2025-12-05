@@ -1,6 +1,7 @@
 package FlexTablePlugin.TestCases;
 
 import FlexTablePlugin.Pages.*;
+import config.EnvManager;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,7 +18,7 @@ Expected Result:
    @Test(priority = 1)
     public void validateFlexTableDashboardLoadCorrectly(){
        FlexTableDashboard flexTableDashboard = page.goTo(AdminLoginPage.class)
-                .doLogin(getUserNameOrEmail(), getPassword())
+                .doLogin(EnvManager.userName(), EnvManager.password())
                .clickFlexTableFromMenu();
        Assert.assertTrue(flexTableDashboard.isItFlexTableDashboardPage(),"Check FlexTable Dashboard page is loaded correctly");
     }

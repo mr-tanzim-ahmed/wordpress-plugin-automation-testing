@@ -3,6 +3,7 @@ package FlexTablePlugin.TestCases;
 import FlexTablePlugin.Pages.AdminLoginPage;
 import FlexTablePlugin.Pages.DashboardPage;
 import FlexTablePlugin.Pages.*;
+import config.EnvManager;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -15,7 +16,7 @@ public class TestPageTest extends BaseTest {
     @Test(priority = 1)
     public void verifyFlexTableShortcodeInPagesPage() {
         TestPage pages = page.goTo(AdminLoginPage.class)
-                .doLogin(getUserNameOrEmail(), getPassword())
+                .doLogin(EnvManager.userName(), EnvManager.password())
                 .goTo(DashboardPage.class)
                 .clickFlexTableFromMenu()
                 .copyTableShortcode()
@@ -29,7 +30,7 @@ public class TestPageTest extends BaseTest {
     @Test(priority = 2)
     public void verifyTableTitleShowsTheTestPages() {
         TestPage testPages = page.goTo(AdminLoginPage.class)
-                .doLogin(getUserNameOrEmail(), getPassword())
+                .doLogin(EnvManager.userName(), EnvManager.password())
                 .goTo(DashboardPage.class)
                 .clickFlexTableFromMenu()
                 .clickEditTable()
@@ -55,7 +56,7 @@ public class TestPageTest extends BaseTest {
     @Test(priority = 4)
     public void confirmEntryInfoDisplaysCorrectly() {
         TestPage testPage = page.goTo(AdminLoginPage.class)
-                .doLogin(getUserNameOrEmail(), getPassword())
+                .doLogin(EnvManager.userName(), EnvManager.password())
                 .goTo(DashboardPage.class)
                 .clickFlexTableFromMenu()
                 .clickEditTable()
@@ -99,11 +100,12 @@ public class TestPageTest extends BaseTest {
         Assert.assertEquals(cssStyle, "flex-direction: row");
     }
     //==============================================================================
+
     //Test Case 8:
     @Test(priority = 9)
     public void checkRowPerPagesFrontendPage() {
         FlexTableDashboard dashboard = page.goTo(AdminLoginPage.class)
-                .doLogin(getUserNameOrEmail(), getPassword())
+                .doLogin(EnvManager.userName(), EnvManager.password())
                 .goTo(DashboardPage.class)
                 .clickFlexTableFromMenu()
                 .clickEditTable()
@@ -142,7 +144,7 @@ public class TestPageTest extends BaseTest {
     @Test(priority = 12)
     public void checkAfterTableDeletedTableNotDisplay() {
         TestPage testPage = page.goTo(AdminLoginPage.class)
-                .doLogin(getUserNameOrEmail(), getPassword())
+                .doLogin(EnvManager.userName(), EnvManager.password())
                 .goTo(DashboardPage.class)
                 .clickFlexTableFromMenu()
                 .clickDeleteTable()

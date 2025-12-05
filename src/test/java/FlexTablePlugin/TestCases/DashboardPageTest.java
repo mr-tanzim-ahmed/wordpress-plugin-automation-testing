@@ -1,5 +1,6 @@
 package FlexTablePlugin.TestCases;
 
+import config.EnvManager;
 import org.testng.Assert;
 import FlexTablePlugin.TestCases.*;
 import org.testng.annotations.Test;
@@ -11,7 +12,7 @@ public class DashboardPageTest extends BaseTest {
     public void checkDashboardPage(){
 
         page.goTo(AdminLoginPage.class)
-                .doLogin(getUserNameOrEmail(), getPassword());
+                .doLogin(EnvManager.userName(), EnvManager.password());
         DashboardPage dashboardPage = page
                 .goTo(DashboardPage.class);
         Assert.assertTrue(dashboardPage.isItDashboardPage());

@@ -34,7 +34,8 @@ public class ValidateRandomTableDataFromTestPageTest extends BaseTest {
                 .doLogin(getUserNameOrEmail(), getPassword())
                 .goTo(DashboardPage.class)
                 .goTo(ValidateRandomTableDataFromTestPage.class)
-                .openNewTabAndVisit(targetPage);
+                .openNewTabAndVisit(targetPage); //return Test page load in new tab
+
 
         // Read values From Test Page (Page row = csv_row -1)
         String pageR2C1 = validationPage.getCellValue(1, 1);

@@ -8,10 +8,10 @@
 
     <test name="Test Cases" preserve-order="true">
         <classes>
-            <class name="FlexTablePlugin.TestCases.TestPageTest">
+            <class name="FlexTablePlugin.TestCases.Draft">
                 <methods>
-                    <include name="checkRowPerPagesFrontendPage"/>
-                    <include name="verifyTableHeightViaCss"/>
+                    <include name="loginTest"/>
+
                 </methods>
             </class>
 

@@ -1,6 +1,8 @@
 package FlexTablePlugin.TestCases;
-import FlexTablePlugin.TestCases.*;
-import FlexTablePlugin.Pages.*;
+import FlexTablePlugin.Pages.AdminLoginPage;
+import FlexTablePlugin.Pages.DashboardPage;
+import config.EnvManager;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import java.io.BufferedReader;
@@ -9,14 +11,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import static FlexTablePlugin.Pages.BasePage.copyPasteData;
-
 public class Draft extends BaseTest{
 
     @Test
     public  void testDemo() throws Exception {
 
-        String googleSheetCsvFile = properties.getProperty("googleSheetUrlCSVFormat");
+        String googleSheetCsvFile = EnvManager.googleSheetUrlCSVFormat();
 
         URL url = new URL(googleSheetCsvFile);
         BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -41,5 +41,24 @@ public class Draft extends BaseTest{
         System.out.println("Row3 Col3 → " + r3c3);
         System.out.println("Row4 Col2 → " + r4c2);
     }
+
+    @Test
+    public void loginTest() {
+
+        DashboardPage dashboardPage = page.goTo(AdminLoginPage.class)
+                .enterUserNameOrEmail(EnvManager.userName())
+                .enterPassword(EnvManager.password())
+                .clickPasswordVisibility()
+                .checkRememberMe()
+                .clickLoginButton();
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
 }

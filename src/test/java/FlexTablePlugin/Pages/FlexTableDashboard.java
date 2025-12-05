@@ -102,20 +102,17 @@ public class FlexTableDashboard extends BasePage{
         clickElement(By.cssSelector("#hide-pagination"));
         return this;
     }
-    public FlexTableDashboard clickDeleteTable(){
-        clickElement(By.xpath("//button[@class='table-delete']"));
-        clickElement(By.xpath("//button[normalize-space()='Delete']"));//popup delete
-        setLoadingTime(1);
-        return this;
-    }
+
     public FlexTableDashboard clickStyling(){
-        clickElement(By.xpath("//button[normalize-space()='Styling']"));
+        clickElement(By.xpath("//div[@class='table-customization-tab-nav']//button[contains(text(),'Styling')]"));
+        setLoadingTime(2);
         return this;
     }
     public FlexTableDashboard selectValuesRowsToShowPerPage(String value){
-        selectElementFromVisibleText(By.cssSelector("#rows-per-page"),value);
+        selectElementFromVisibleText(By.cssSelector("#rows-per-page"), value);
         return this;
     }
+
     public FlexTableDashboard selectTableHeight(String heightValue){
         selectElementFromVisibleText(By.cssSelector("#table_height"),heightValue);
         return this;
@@ -124,6 +121,13 @@ public class FlexTableDashboard extends BasePage{
     public PagesPage clickPagesFromMenu(){
         clickElement(By.xpath("//a[@class='wp-has-submenu wp-not-current-submenu menu-top menu-icon-page']"));
         return goTo(PagesPage.class);
+    }
+
+    public FlexTableDashboard clickDeleteTable(){
+        clickElement(By.xpath("//button[@class='table-delete']"));
+        clickElement(By.xpath("//button[normalize-space()='Delete']"));//popup delete
+        setLoadingTime(1);
+        return this;
     }
 
 }

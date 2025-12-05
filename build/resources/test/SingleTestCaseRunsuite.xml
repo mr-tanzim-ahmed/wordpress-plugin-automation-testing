@@ -10,32 +10,14 @@
         <classes>
 
 
-
-        <!-- Test Case 7 -->
-        <class name="FlexTablePlugin.TestCases.TestPageTest" >
-            <methods>
-                <include name="confirmEntryInfoDisplaysCorrectly" />
-                <include name="validatePaginationDisplaysCorrectly" />
-                <include name="checkPaginationFunctionsOk" />
-                <include name="validateNoTableLayoutIssues" />
-                <include name="validateNoLayoutIssuesForShowEntriesAndPaginationByCssStyle" />
-            </methods>
-        </class>
         <!-- Test Case 8 -->
         <class name="FlexTablePlugin.TestCases.TestPageTest">
             <methods>
-                <include name="checkRowPerPagesFrontendPage"/>
+                <include name="checkRowPerPagesAndCheckFrontendPage"/>
                 <include name="verifyTableHeightViaCss"/>
             </methods>
         </class>
 
-        <!-- Test Case 9 -->
-        <class name="FlexTablePlugin.TestCases.TestPageTest" >
-            <methods>
-                <include name="checkAfterTableDeletedTableNotDisplay" />
-                <include name="checkAfterDeletedTableShowsProperEmptyMessage" />
-            </methods>
-        </class>
         </classes>
     </test>
 

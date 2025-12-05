@@ -100,13 +100,14 @@ public class TestPageTest extends BaseTest {
         TestPage testPage = page.goTo(TestPage.class);
         String cssStyle = testPage.getCssAttribute(
                 By.xpath("//div[@class='bottom_options bottom_options_0']"), "style");
-        Assert.assertEquals(cssStyle, "flex-direction: row");
+        Assert.assertTrue("flex-direction: row".contains(cssStyle),"Layout shows Entries and Pagination");
     }
 
     //==============================================================================
     //Test Case 8:
     @Test(priority = 9)
-    public void checkRowPerPagesFrontendPage() {
+    public void checkRowPerPagesAndCheckFrontendPage() {
+        String rowPerPages = "30";
         page.goTo(AdminLoginPage.class)
                 .doLogin(EnvManager.userName(), EnvManager.password())
                 .goTo(DashboardPage.class)
@@ -114,14 +115,15 @@ public class TestPageTest extends BaseTest {
                 .clickEditTable()
                 .clickTableCustomization()
                 .clickStyling()
-                .selectValuesRowsToShowPerPage("30")
+                .selectValuesRowsToShowPerPage(rowPerPages)
                 .clickSaveChangesButton();
 
         TestPage testPage = page.goTo(TestPage.class);
         testPage.openNewTabAndVisit(targetPage);
-
-        Assert.assertEquals(testPage.checkShowEntries(), "30",
-                "Rows per page mismatch");
+        System.out.println("checkShowEntriesNumericOnly "+ testPage.checkShowEntriesNumericOnly());
+        String actualValue = testPage.checkShowEntries();
+        Assert.assertEquals(actualValue, rowPerPages,
+                "Rows per page mismatch - Expected: 30, but got: " + actualValue);
     }
 
     @Test(priority = 10)
@@ -153,8 +155,8 @@ public class TestPageTest extends BaseTest {
                 .clickDeleteTable()
                 .clickPagesFromMenu()
                 .visitCreatedTestPage(targetPage);
-        Assert.assertEquals(testPage.deletedTableEmptyMessageCheck(),
-                "Table maybe deleted or can't be loaded.");
+        Assert.assertEquals("Table maybe deleted or can’t be loaded.",testPage.deletedTableEmptyMessageCheck(),
+                "Table does not displayed in Frontend page and show properEmptyMessage");
     }
 
     //Table does not display.

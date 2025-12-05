@@ -56,7 +56,7 @@
             <!-- Test Case 8 -->
             <class name="FlexTablePlugin.TestCases.TestPageTest">
                 <methods>
-                    <include name="checkRowPerPagesFrontendPage"/>
+                    <include name="checkRowPerPagesAndCheckFrontendPage"/>
                     <include name="verifyTableHeightViaCss"/>
                 </methods>
             </class>

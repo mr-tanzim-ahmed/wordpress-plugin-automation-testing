@@ -9,7 +9,6 @@ public class TestPage extends BasePage{
         super(driver);
     }
     public boolean isTableDisplayedInTestPage(){
-
         return getWebElements(By.xpath("//div[@id='create_tables_wrapper']")).size()>0;
     }
 
@@ -52,7 +51,34 @@ public class TestPage extends BasePage{
         return actual.equalsIgnoreCase(expected.trim());
     }
     public String checkShowEntries() {
-        return  selectElement(By.cssSelector("select[name='create_tables_length']")).getFirstSelectedOption().getText().trim();
+        By entriesDropdown = By.cssSelector("select[name='create_tables_length']");
+        return selectElement(entriesDropdown).getFirstSelectedOption().getText().trim();
+    }
+
+    // Alternative with better error handling
+    public String getSelectedEntriesPerPage() {
+        try {
+            By entriesDropdown = By.cssSelector("select[name='create_tables_length']");
+            String selectedValue = selectElement(entriesDropdown)
+                    .getFirstSelectedOption()
+                    .getText()
+                    .trim();
+            System.out.println("Selected entries per page: " + selectedValue);
+            return selectedValue;
+        } catch (Exception e) {
+            System.out.println("Failed to get selected entries: " + e.getMessage());
+            return "";
+        }
+    }
+    public String checkShowEntriesNumericOnly() {
+        By entriesDropdown = By.cssSelector("select[name='create_tables_length']");
+        String selectedText = selectElement(entriesDropdown)
+                .getFirstSelectedOption()
+                .getText()
+                .trim();
+
+        // Extract only numeric value
+        return selectedText.replaceAll("\\D", ""); // Removes all non-digits
     }
     public String getTableHeight() {
         By selector = By.xpath("//div[@class='dataTables_scrollBody']");

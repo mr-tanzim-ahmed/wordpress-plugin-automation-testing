@@ -8,10 +8,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class InstalledPluginsPageTest extends BaseTest {
+
+
     @Test(priority = 1)
     public void checkInstalledPluginsPage() {
         DashboardPage installedPluginsPage = page.goTo(AdminLoginPage.class)
-                .doLogin(EnvManager.userName(), getPassword());
+                .doLogin(EnvManager.userName(), EnvManager.password());
 
         InstalledPluginsPage pluginPage = page.goTo(DashboardPage.class)
                 .clickPluginsInDashboard();

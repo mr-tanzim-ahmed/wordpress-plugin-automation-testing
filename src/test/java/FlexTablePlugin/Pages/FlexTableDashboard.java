@@ -31,7 +31,7 @@ public class FlexTableDashboard extends BasePage{
         return getTableName;
     }
     public FlexTableDashboard copyTableShortcode() {
-        // Get the last 2 digits from the button's href safely
+        // Get the last 1 or 2 digits from the button's href safely
         String id = getTableId();
 
         // Build the shortcode using StringBuffer
@@ -45,16 +45,22 @@ public class FlexTableDashboard extends BasePage{
         return this;
     }
 
-    public String getTableId(){
+    public String getTableId() {
         String text = getElementsText(By.xpath("//p[@class='swptls-title p']"));
-        System.out.println("Table ID: " + text);
-        String id = "";
-        if (text.length() >= 2) {
-            id = text.substring(text.length() - 2);
-            return id;
+        System.out.println("Table Text: " + text);
+
+        // Remove all non-digit characters
+        String digitsOnly = text.replaceAll("\\D", "");
+
+        if (digitsOnly.isEmpty()) {
+            return ""; // No digits found
         }
-        return id;
+
+        // Take last 2 digits if possible, else last 1 digit
+        return digitsOnly.length() >= 2 ? digitsOnly.substring(digitsOnly.length() - 2)
+                : digitsOnly;
     }
+
 
     public FlexTableDashboard clickEditTable(){
         clickElement(By.xpath("//div[@class='tooltip-wrapper']//a[@class='table-edit']"));
@@ -72,15 +78,16 @@ public class FlexTableDashboard extends BasePage{
     //Go to Table Customization → Layout
     // Enable 'Show Table Title'
     public FlexTableDashboard clickShowTableTitle(){
-        clickElement(By.xpath("//input[@id='show-title']"));
+        clickElement(By.xpath("//label[normalize-space()='Show Table title']"));
         return this;
     }
     //Go to Table Customization → Layout
     //Enable 'Show Table Description Below the Table'
-    public FlexTableDashboard clickShowTableDescriptionAndSelectBelow(){
-        clickElement(By.xpath("//input[@id='show-title']"));
-        Select select = new Select(getWebElement(By.xpath("//select[@id='description-position']")));
-        select.selectByVisibleText("below");
+    public FlexTableDashboard clickShowTableDescriptionAndSelectBelow() {
+        clickElement(By.cssSelector("#show-description"));
+
+        selectElementFromVisibleText(By.xpath("//select[@name='description_position']"), "below");
+
         return this;
     }
     //Go to Table Customization → Layout

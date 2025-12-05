@@ -17,7 +17,7 @@ public class WpPluginDirectoryPage extends BasePage{
     public WpPluginDirectoryPage searchPlugin(){
         waitForElementToBeVisible(By.xpath("//input[@id='search-plugins']"));
         setInput(By.xpath("//input[@id='search-plugins']"),"FlexTable");
-        waitForElementToBeVisible(By.xpath("//a[@aria-label='Install FlexTable – Live WP table sync with Google Sheets 3.19.1 now']"));
+        waitForElementToBeVisible(By.xpath("//a[@aria-label='Install FlexTable – Live WP table sync with Google Sheets 3.19.2 now']"));
         return this;
     }
 

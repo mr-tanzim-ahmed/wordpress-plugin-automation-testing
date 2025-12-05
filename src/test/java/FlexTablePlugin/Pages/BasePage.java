@@ -11,10 +11,10 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 public class BasePage extends Page {
     public static ArrayList<String> copyPasteData = new ArrayList<>();
+
     public BasePage(WebDriver driver) {
         super(driver);
     }
@@ -27,7 +27,7 @@ public class BasePage extends Page {
             element = driver.findElement(selector);
             addInfo("Selenium WebDriver found a WebElement with " + selector + " selector");
         } catch (Exception e) {
-            addFailInfo("Selenium WebDriver is not found a WebElement with "+selector+" selector");
+            addFailInfo("Selenium WebDriver is not found a WebElement with " + selector + " selector");
             System.out.println("Element not found: " + selector);
         }
         return element;
@@ -37,11 +37,11 @@ public class BasePage extends Page {
     public List<WebElement> getWebElements(By selector) {
         List<WebElement> elements = null;
         try {
-            addInfo("Selenium WebDriver going to find a WebElements with " + selector + " selector");
+            addInfo("Selenium WebDriver going to find WebElements with " + selector + " selector");
             elements = driver.findElements(selector);
-            addInfo("Selenium WebDriver found a WebElements with " + selector + " selector");
+            addInfo("Selenium WebDriver found WebElements with " + selector + " selector");
         } catch (Exception e) {
-            addFailInfo("Selenium WebDriver is not found  WebElements with "+selector+" selector");
+            addFailInfo("Selenium WebDriver is not found WebElements with " + selector + " selector");
             System.out.println("Elements not found: " + selector);
         }
         return elements;
@@ -55,74 +55,91 @@ public class BasePage extends Page {
 
     @Override
     public void setInput(By selector, String text) {
-        getWebElement(selector).clear();
         waitForElementToBeVisible(selector);
+        getWebElement(selector).clear();
         getWebElement(selector).sendKeys(text);
     }
+
     @Override
-    public void clearInputText(By selector){
+    public void clearInputText(By selector) {
         getWebElement(selector).clear();
     }
 
     @Override
     public String getElementsText(By selector) {
-        String text = getWebElement(selector).getText();
-        return text;
+        return getWebElement(selector).getText();
     }
+
     @Override
-    public Select selectElement(By selector){
-        Select select = new Select(getWebElement(selector));
-        return select;
+    public Select selectElement(By selector) {
+        waitForElementToBeClickable(selector);
+        return new Select(getWebElement(selector));
     }
+
     @Override
     public void selectElementFromVisibleText(By selector, String visibleText) {
-        selectElement(selector).selectByVisibleText(visibleText);
+        try {
+            addInfo("Selecting option '" + visibleText + "' from dropdown with selector: " + selector);
+            selectElement(selector).selectByVisibleText(visibleText);
+            addInfo("Successfully selected option '" + visibleText + "'");
+        } catch (Exception e) {
+            addFailInfo("Failed to select option '" + visibleText + "' from dropdown: " + e.getMessage());
+            throw e;
+        }
     }
-    @Override
-    public String getCurrentPageURL(){
 
+    @Override
+    public String getCurrentPageURL() {
         return driver.getCurrentUrl();
     }
 
-    public void setLoadingTime(int seconds){
+    public void setLoadingTime(int seconds) {
         try {
             Thread.sleep(seconds * 1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
+
     @Override
-    public void goToTargetPage(String url){
+    public void goToTargetPage(String url) {
         driver.get(url);
     }
+
     @Override
     public void waitForElementToBeVisible(By selector) {
         wait.until(ExpectedConditions.visibilityOf(getWebElement(selector)));
     }
 
+    public void waitForElementToBeClickable(By selector) {
+        wait.until(ExpectedConditions.elementToBeClickable(selector));
+    }
+
     @Override
-    public String homePageUrl(String url){
+    public String homePageUrl(String url) {
         return url.trim();
     }
+
     @Override
-    public void openNewTabAndVisit(String url){
+    public void openNewTabAndVisit(String url) {
         driver.switchTo().newWindow(WindowType.TAB);
         driver.get(url);
         setLoadingTime(2);
     }
 
-    public String getCssAttribute(By selector,String cssPropertyName){
+    public String getCssAttribute(By selector, String cssPropertyName) {
         return getWebElement(selector).getCssValue(cssPropertyName);
     }
+
     public void addInfo(String message) {
         if (ReportTestManager.getTest() != null) {
             ReportTestManager.getTest().log(Status.INFO, message);
         }
     }
+
     public void addFailInfo(String message) {
         if (ReportTestManager.getTest() != null) {
             ReportTestManager.getTest().log(Status.FAIL, message);
         }
-
     }
 }

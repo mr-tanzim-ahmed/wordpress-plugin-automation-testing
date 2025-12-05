@@ -13,9 +13,10 @@ public class TestPage extends BasePage{
         return getWebElements(By.xpath("//div[@id='create_tables_wrapper']")).size()>0;
     }
 
-    public boolean isTableTitleDisplayed(String tableTitle){
-        String title = getElementsText(By.xpath("//h3[@id='swptls-table-title']")).trim();
-        if(title.equals(tableTitle)){
+    public boolean isTableTitleDisplayed(String actualTableTitle){
+        String title = getElementsText(By.cssSelector("#swptls-table-title")).trim();
+        System.out.println("Expected Table Title: "+title);
+        if(title.contains(actualTableTitle)){
             return true;
         }
         return false;

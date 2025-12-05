@@ -7,11 +7,12 @@ import org.testng.annotations.Test;
 
 public class CreateNewTablePageTest extends BaseTest {
 
+    //Test Case 4: Create a New Table Using Google Sheet Input
     @Test(priority = 1)
     public void validateCreateNewTable(){
 
         CreateNewTablePage createNewTablePage = page.goTo(AdminLoginPage.class)
-                .doLogin(getUserNameOrEmail(), getPassword())
+                .doLogin(EnvManager.userName(), EnvManager.password())
                 .clickFlexTableFromMenu()
                 .clickCreateNewTableButton()
                 .inputGoogleSheetUrl(EnvManager.googleSheetURL())

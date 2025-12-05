@@ -21,7 +21,7 @@ public class DashboardPage extends BasePage{
         return getWebElements(By.xpath("//div[normalize-space()='Plugins']")).size() > 0;
     }
     public FlexTableDashboard clickFlexTableFromMenu() {
-        clickElement(By.xpath("//div[normalize-space()='FlexTable']"));
+        clickElement(By.xpath("//div[@class='wp-menu-image dashicons-before']"));
         return goTo(FlexTableDashboard.class);
     }
     public TestPage clickPagesFromMenu() {

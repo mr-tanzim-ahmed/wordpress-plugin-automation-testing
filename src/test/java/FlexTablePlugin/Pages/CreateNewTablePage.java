@@ -21,7 +21,8 @@ public class CreateNewTablePage extends BasePage{
     }
     //1. Data Source
     public CreateNewTablePage inputTableTitle(String tableTitle){
-        setInput(By.xpath("//input[@id='table-name']"),tableTitle);
+        getWebElement(By.cssSelector("#table-name")).clear();
+        setInput(By.cssSelector("#table-name"),tableTitle);
         return this;
     }
     public CreateNewTablePage inputTableDescription(String tableDescription){

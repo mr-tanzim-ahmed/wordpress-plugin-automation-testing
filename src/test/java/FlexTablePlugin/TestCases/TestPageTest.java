@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class TestPageTest extends BaseTest {
 
-    public String targetPage = properties.getProperty("homePageURL")+properties.getProperty("testPageSlug");
+    public String targetPage = properties.getProperty("homePageURL") + properties.getProperty("testPageSlug");
 
     //Test Case 5: Confirm the table renders correctly on the frontend using its shortcode.
     @Test(priority = 1)
@@ -25,6 +25,7 @@ public class TestPageTest extends BaseTest {
                 .visitCreatedTestPage(targetPage);
         Assert.assertTrue(pages.isTableDisplayedInTestPage(), "FlexTable is displayed in the Page");
     }
+
     //==============================================================================
     //Test Case 6: Table title appears above the table.
     @Test(priority = 2)
@@ -40,6 +41,7 @@ public class TestPageTest extends BaseTest {
                 .clickSaveChangesButton()
                 .clickPagesFromMenu()
                 .visitCreatedTestPage(targetPage);
+
         Assert.assertTrue(testPages.isTableTitleDisplayed(properties.getProperty("tableTitle")),
                 "Check table Title is displayed in the Test Page");
     }
@@ -51,6 +53,7 @@ public class TestPageTest extends BaseTest {
         Assert.assertTrue(testPages.isTableDescriptionDisplayed(properties.getProperty("tableDescription")),
                 "Check table description is displayed in the Test Page");
     }
+
     //==============================================================================
     //Test Case 7: Entry Info displays correctly.
     @Test(priority = 4)
@@ -99,12 +102,12 @@ public class TestPageTest extends BaseTest {
                 By.xpath("//div[@class='bottom_options bottom_options_0']"), "style");
         Assert.assertEquals(cssStyle, "flex-direction: row");
     }
-    //==============================================================================
 
+    //==============================================================================
     //Test Case 8:
     @Test(priority = 9)
     public void checkRowPerPagesFrontendPage() {
-        FlexTableDashboard dashboard = page.goTo(AdminLoginPage.class)
+        page.goTo(AdminLoginPage.class)
                 .doLogin(EnvManager.userName(), EnvManager.password())
                 .goTo(DashboardPage.class)
                 .clickFlexTableFromMenu()
@@ -119,12 +122,11 @@ public class TestPageTest extends BaseTest {
 
         Assert.assertEquals(testPage.checkShowEntries(), "30",
                 "Rows per page mismatch");
-        
     }
 
     @Test(priority = 10)
     public void verifyTableHeightViaCss() {
-        FlexTableDashboard flexTableDashboard = page.goTo(TestPage.class)
+        page.goTo(TestPage.class)
                 .clickAndGoDashboard()
                 .clickFlexTableFromMenu()
                 .clickEditTable()
@@ -137,12 +139,13 @@ public class TestPageTest extends BaseTest {
         testPage.openNewTabAndVisit(targetPage);
         String height = testPage.getTableHeight();
         Assert.assertEquals(height, "800px",
-                "Validate table height, Height is: "+height);
+                "Validate table height, Height is: " + height);
     }
-//==============================================================================
-    //Test Case 9: Table does not display.
-    @Test(priority = 12)
-    public void checkAfterTableDeletedTableNotDisplay() {
+
+    //==============================================================================
+    //Test Case 9: Proper error or empty state message appears.
+    @Test(priority = 11)
+    public void checkAfterDeletedTableShowsProperEmptyMessage() {
         TestPage testPage = page.goTo(AdminLoginPage.class)
                 .doLogin(EnvManager.userName(), EnvManager.password())
                 .goTo(DashboardPage.class)
@@ -150,14 +153,14 @@ public class TestPageTest extends BaseTest {
                 .clickDeleteTable()
                 .clickPagesFromMenu()
                 .visitCreatedTestPage(targetPage);
-        Assert.assertFalse(testPage.isTableDisplayedInTestPage(), "Table should not displayed");
-    }
-
-    //Proper error or empty state message appears.
-    @Test(priority = 11)
-    public void checkAfterDeletedTableShowsProperEmptyMessage() {
-        TestPage testPage = page.goTo(TestPage.class);
         Assert.assertEquals(testPage.deletedTableEmptyMessageCheck(),
                 "Table maybe deleted or can't be loaded.");
+    }
+
+    //Table does not display.
+    @Test(priority = 12)
+    public void checkAfterTableDeletedTableNotDisplay() {
+        TestPage testPage = page.goTo(TestPage.class);
+        Assert.assertFalse(testPage.isTableDisplayedInTestPage(), "Table should not displayed");
     }
 }

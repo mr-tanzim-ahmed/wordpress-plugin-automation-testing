@@ -27,3 +27,9 @@ jobs:
 
       - name: Run TestNG Suite
         run: ./gradlew test -PsuitePath=src/test/resources/regressionSuiteForFlexTablePluginWithReport.xml
+
+      - name: Upload Extent Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: FlexTable-Extent-Report
+          path: build/extendReportForFlexTablePlugin/Report.html

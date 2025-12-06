@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  simple_deployment_pipeline:
+  Testing_Pipeline:
     runs-on: ubuntu-latest
 
     steps:

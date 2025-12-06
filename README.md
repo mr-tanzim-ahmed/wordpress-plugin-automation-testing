@@ -1,6 +1,9 @@
 # 🧪 WordPress Plugin Automation Testing (Flextable)
 
-A robust automated testing framework designed for the **Flextable WordPress Plugin**. This project uses **Selenium WebDriver** and **TestNG** to validate table creation, data integrity, and UI responsiveness on a local WordPress environment.
+Wordpress automated testing framework designed for the **Flextable WordPress Plugin**. This project uses **Selenium WebDriver** and **TestNG** to validate table creation, data integrity, and UI responsiveness on a local WordPress environment.
+
+## 📋 Test Plan
+![FlexTable Automation Test Plan](https://drive.google.com/uc?export=view&id=1Emhs-b4LSVyDMpFHL7H5d55gKEGxwQr9)
 
 ## 📋 Prerequisites
 

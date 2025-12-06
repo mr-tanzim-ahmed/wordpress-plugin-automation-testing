@@ -131,6 +131,10 @@ public class BasePage extends Page {
         return getWebElement(selector).getCssValue(cssPropertyName);
     }
 
+    public String getCssClassValue(By selector) {
+        return getWebElement(selector).getAttribute("class");
+    }
+
     public void addInfo(String message) {
         if (ReportTestManager.getTest() != null) {
             ReportTestManager.getTest().log(Status.INFO, message);

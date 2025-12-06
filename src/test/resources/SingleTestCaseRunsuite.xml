@@ -8,21 +8,11 @@
 
     <test name="Test Cases" preserve-order="true">
         <classes>
-            <class name="FlexTablePlugin.TestCases.TestPageTest" >
-                <methods>
-                    <include name="verifyTableTitleShowsTheTestPages" />
-                    <include name="verifyTableDescriptionShowsTheTestPages" />
 
-                </methods>
-            </class>
 
-        <!-- Test Case 8 -->
-        <class name="FlexTablePlugin.TestCases.TestPageTest">
-            <methods>
-                <include name="checkRowPerPagesAndCheckFrontendPage"/>
-                <include name="verifyTableHeightViaCss"/>
-            </methods>
-        </class>
+            <!-- Test Case 9: Table Deletion and Empty State -->
+            <class name="FlexTablePlugin.TestCases.TestPageForVerifyDeleteTableAndFrontendRemovalTest"/>
+
 
         </classes>
     </test>

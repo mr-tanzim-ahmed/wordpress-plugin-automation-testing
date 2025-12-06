@@ -17,11 +17,13 @@ public class CreateNewTablePage extends BasePage{
     }
     public CreateNewTablePage clickCreateTableFromUrlButton(){
         clickElement(By.xpath("//button[normalize-space()='Create table from URL']"));
+        setLoadingTime(1);
         return this;
     }
     //1. Data Source
     public CreateNewTablePage inputTableTitle(String tableTitle){
-        getWebElement(By.cssSelector("#table-name")).clear();
+        setLoadingTime(1);
+        clearInputText(By.cssSelector("#table-name"));
         setInput(By.cssSelector("#table-name"),tableTitle);
         return this;
     }

@@ -20,7 +20,8 @@ public class FlexTableDashboard extends BasePage{
     }
 
     public CreateNewTablePage clickCreateNewTableButton(){
-        clickElement(By.cssSelector(".btn.btn-lg"));
+        waitForElementToBeClickable(By.cssSelector("button[class*='btn btn-lg']"));
+        clickElement(By.cssSelector("button[class*='btn btn-lg']"));
         return goTo(CreateNewTablePage.class);
     }
     public boolean checkNewTableEntryInDashboard(){
@@ -67,18 +68,24 @@ public class FlexTableDashboard extends BasePage{
         return this;
     }
     public FlexTableDashboard clickTableCustomization(){
-        clickElement(By.xpath("//span[normalize-space()='3. Table customization']"));
+        clickNextButton();
+        clickNextButton();
+        setLoadingTime(1);
+        return this;
+    }
+    public FlexTableDashboard clickNextButton(){
+        clickElement(By.cssSelector(".table-action__next"));
         return this;
     }
     public FlexTableDashboard clickSaveChangesButton(){
-        clickElement(By.xpath("//button[normalize-space()='Save changes']"));
+        clickElement(By.cssSelector(".table-action__save"));
         setLoadingTime(1);
         return this;
     }
     //Go to Table Customization → Layout
     // Enable 'Show Table Title'
     public FlexTableDashboard clickShowTableTitle(){
-        clickElement(By.xpath("//label[normalize-space()='Show Table title']"));
+        clickElement(By.xpath("//input[@id='show-title']"));
         return this;
     }
     //Go to Table Customization → Layout

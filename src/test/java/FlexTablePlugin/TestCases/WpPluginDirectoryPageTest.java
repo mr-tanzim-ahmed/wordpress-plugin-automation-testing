@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class WpPluginDirectoryPageTest extends BaseTest{
 
-    @Test(priority = 1)
+    @Test(priority = 2)
     public void activePluginShouldBeSuccessfulFromWpDirectoryPages(){
         page.goTo(AdminLoginPage.class)
                 .doLogin(EnvManager.userName(), EnvManager.password())

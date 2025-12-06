@@ -1,5 +1,6 @@
 package FlexTablePlugin.Pages;
 
+import config.EnvManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WindowType;
@@ -28,7 +29,7 @@ public class ValidateRandomTableDataFromTestPage extends BasePage {
     }
 
     public void getDataFromRandomTableCells() throws Exception {
-        String googleSheetCsvFile = properties.getProperty("googleSheetUrlCSVFormat");
+        String googleSheetCsvFile = EnvManager.googleSheetUrlCSVFormat();
 
         if (googleSheetCsvFile == null || googleSheetCsvFile.isEmpty()) {
             throw new RuntimeException("googleSheetUrlCSVFormat is missing in properties file!");

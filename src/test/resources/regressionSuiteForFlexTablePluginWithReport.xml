@@ -1,73 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
+<suite name="FlexTable Plugin Test Suite">
     <listeners>
-        <listener class-name="FlexTablePlugin.Report.TestListener"></listener>
+        <listener class-name="FlexTablePlugin.Report.TestListener"/>
     </listeners>
-    <test name="Automation Test Cases" preserve-order="true">
+
+    <test name="FlexTable Automation Test Cases" preserve-order="true">
         <classes>
-            <!-- Test Case 1 -->
-            <class name="FlexTablePlugin.TestCases.AdminLoginPageTest" />
-            <class name="FlexTablePlugin.TestCases.DashboardPageTest" />
 
-            <!-- Test Case 2 -->
-            <class name="FlexTablePlugin.TestCases.WpPluginDirectoryPageTest" />
-            <class name="FlexTablePlugin.TestCases.InstalledPluginsPageTest" />
+            <!-- Test Case 1: WordPress Admin Login -->
+            <class name="FlexTablePlugin.TestCases.AdminLoginPageTest"/>
+            <class name="FlexTablePlugin.TestCases.DashboardPageTest"/>
 
-            <!-- Test Case 3 -->
-            <class name="FlexTablePlugin.TestCases.FlexTableDashboardTest" />
+            <!-- Test Case 2: Plugin Installation -->
+            <class name="FlexTablePlugin.TestCases.WpPluginDirectoryPageTest"/>
+            <class name="FlexTablePlugin.TestCases.InstalledPluginsPageTest"/>
 
-            <!-- Test Case 4 -->
-            <class name="FlexTablePlugin.TestCases.FlexTableDashboardTest" />
-            <class name="FlexTablePlugin.TestCases.CreateNewTablePageTest" />
+            <!-- Test Case 3: FlexTable Dashboard -->
+            <class name="FlexTablePlugin.TestCases.FlexTableDashboardTest"/>
 
-            <!-- Test Case 5 -->
-            <class name="FlexTablePlugin.TestCases.TestPageTest" >
-                <methods>
-                    <include name="verifyFlexTableShortcodeInPagesPage" />
-                    <include name="verifyTableDataAndHeaders" />
-                </methods>
-            </class>
-            <class name="FlexTablePlugin.TestCases.ValidateRandomTableDataFromTestPageTest" />
-            <class name="FlexTablePlugin.TestCases.ValidateRandomTableDataFromTestPageTest" >
-                <methods>
-                    <include name="matchGoogleSheetDataToTestPageTable" />
-                </methods>
-            </class>
+            <!-- Test Case 4: Create New Table -->
+            <class name="FlexTablePlugin.TestCases.CreateNewTablePageTest"/>
 
-            <!-- Test Case 6 -->
-            <class name="FlexTablePlugin.TestCases.TestPageTest" >
-                <methods>
-                    <include name="verifyTableTitleShowsTheTestPages" />
-                    <include name="verifyTableDescriptionShowsTheTestPages" />
+            <!-- Test Case 5: Shortcode Rendering and Data Validation -->
+            <class name="FlexTablePlugin.TestCases.TestPageForTableValidationTest"/>
 
-                </methods>
-            </class>
-            <!-- Test Case 7 -->
-            <class name="FlexTablePlugin.TestCases.TestPageTest" >
-                <methods>
-                    <include name="confirmEntryInfoDisplaysCorrectly" />
-                    <include name="validatePaginationDisplaysCorrectly" />
-                    <include name="checkPaginationFunctionsOk" />
-                    <include name="validateNoTableLayoutIssues" />
-                    <include name="validateNoLayoutIssuesForShowEntriesAndPaginationByCssStyle" />
-                </methods>
-            </class>
-            <!-- Test Case 8 -->
-            <class name="FlexTablePlugin.TestCases.TestPageTest">
-                <methods>
-                    <include name="checkRowPerPagesAndCheckFrontendPage"/>
-                    <include name="verifyTableHeightViaCss"/>
-                </methods>
-            </class>
+            <!-- Test Case 6: Table Title and Description Display -->
+            <class name="FlexTablePlugin.TestCases.TestPageForTableTitleAndDescriptionValidationTest"/>
 
-            <!-- Test Case 9 -->
-            <class name="FlexTablePlugin.TestCases.TestPageTest" >
-                <methods>
-                    <include name="checkAfterTableDeletedTableNotDisplay" />
-                    <include name="checkAfterDeletedTableShowsProperEmptyMessage" />
-                </methods>
-            </class>
+            <!-- Test Case 7: Entry Info, Pagination, and Layout Validation -->
+            <class name="FlexTablePlugin.TestCases.TestPageForTableEntryInfoAndPaginationValidationTest"/>
+
+            <!-- Test Case 8: Rows Per Page and Table Height Customization -->
+            <class name="FlexTablePlugin.TestCases.TestPageForValidateUpdateRowAndTableHeightTest"/>
+
+            <!-- Test Case 9: Table Deletion and Empty State -->
+            <class name="FlexTablePlugin.TestCases.TestPageForVerifyDeleteTableAndFrontendRemovalTest"/>
 
         </classes>
     </test>

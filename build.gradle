@@ -21,16 +21,24 @@ dependencies {
 
 test {
     useTestNG() {
-        if (project.hasProperty('testng.suites')) {
-            project.property('testng.suites').toString().split(',').each { suite ->
-                suites 'src/test/resources/' + suite + '-suite.xml'
-            }
+
+        // Allow passing XML suite file from CLI or GitHub Actions
+        if (project.hasProperty('suitePath')) {
+            String suiteFile = project.property('suitePath').toString()
+            println "➡ Running TestNG suite: $suiteFile"
+            suites suiteFile
+        } else {
+            println "⚠ No suitePath provided. Running default regression suite..."
+            suites 'src/test/resources/regressionSuiteForFlexTablePluginWithReport.xml'
         }
     }
+
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
 }
+
+
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'

@@ -1,6 +1,5 @@
 package FlexTablePlugin.Pages;
 
-import FlexTablePlugin.TestCases.TestPageTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

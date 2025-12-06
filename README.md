@@ -40,13 +40,40 @@ git clone https://github.com/mr-tanzim-ahmed/wordpress-plugin-automation-testing
 
 ## 🔑 Configuration
 
-> Note: You can run tests using your own WordPress environment credentials.
+> You can run tests using your own WordPress environment credentials. Configure your environment using either **Properties** or **.env**.
 
 **Option A (Properties):**  
-Update the `src/test/resources/config.properties` file with your URL, username, and password.
+Update the `src/test/resources/config.properties` file with your environment and test data.
 
 **Option B (.env):**  
 Create a `.env` file in the root directory to store sensitive credentials safely.
+
+**Required Configuration Values:**
+
+1. **WordPress Setup**
+    - Install **LocalWP** and create a WordPress site.
+    - Click **SSL: Trust** for HTTPS.
+    - Go to the WordPress **Admin page**.
+
+2. **Admin & Site Info**
+    - Admin page URL
+    - Admin username
+    - Admin password
+    - Home page URL
+    - Test page slug
+
+3. **Test Data**
+    - Google Sheet link (optional)
+    - CSV file link (optional)
+    - Test table title
+    - Test page title and slug (similar to title)
+    - Test table description
+
+4. **Browser Selection**
+    - Browser to use: `chrome` or `firefox`
+
+> Once these values are set, the tests will run on your local WordPress environment using the specified pages, credentials, and browser settings.
+
 
 ---
 

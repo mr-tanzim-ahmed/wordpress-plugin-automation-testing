@@ -13,6 +13,7 @@ public class TestPage extends BasePage{
     }
 
     public boolean isTableTitleDisplayed(String actualTableTitle){
+        setLoadingTime(1);
         String title = getElementsText(By.cssSelector("#swptls-table-title")).trim();
         System.out.println("Expected Table Title: "+title);
         if(title.equals(actualTableTitle)){
@@ -90,7 +91,7 @@ public class TestPage extends BasePage{
     }
     public DashboardPage clickAndGoDashboard(){
         setLoadingTime(1);
-        clickElement(By.xpath("//div[contains(@class,'entry-content')]//h5//b[contains(text(),'Table maybe deleted')]"));
+        clickElement(By.xpath("//body/div[@id='wpwrap']/div[@id='wpcontent']/div[@id='wpadminbar']/div[@id='wp-toolbar']/ul[@id='wp-admin-bar-root-default']/li[@id='wp-admin-bar-wp-logo']/a[1]"));
         return goTo(DashboardPage.class);
     }
 

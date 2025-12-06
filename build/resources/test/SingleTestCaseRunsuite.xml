@@ -10,8 +10,11 @@
         <classes>
 
 
-            <!-- Test Case 9: Table Deletion and Empty State -->
-            <class name="FlexTablePlugin.TestCases.TestPageForVerifyDeleteTableAndFrontendRemovalTest"/>
+            <!-- Test Case 8: Rows Per Page and Table Height Customization -->
+            <class name="FlexTablePlugin.TestCases.TestPageForValidateUpdateRowAndTableHeightTest"/>
+
+
+
 
 
         </classes>

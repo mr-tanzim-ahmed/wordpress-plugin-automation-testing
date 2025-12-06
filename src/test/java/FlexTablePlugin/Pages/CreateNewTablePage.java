@@ -45,7 +45,7 @@ public class CreateNewTablePage extends BasePage{
     }
     //Return Dashboard (select left sides FlexTable menu)
     public FlexTableDashboard clickFlexTableDashboardButton(){
-        clickElement(By.xpath("//div[normalize-space()='FlexTable']"));
+        clickElement(By.xpath("//div[@class='wp-menu-image dashicons-before']"));
         return goTo(FlexTableDashboard.class);
     }
 }

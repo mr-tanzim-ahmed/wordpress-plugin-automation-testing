@@ -103,3 +103,10 @@ The automation suite is integrated with **GitHub Actions**. Here’s the workflo
 4. **Build Project:** Compiles the project using Gradle.
 5. **Run Tests:** Executes the TestNG suite and generates **Extent Reports**.
 6. **Serve Report (Optional):** Extent Reports can be served locally via a simple HTTP server for review.  
+
+## Testing report:
+<pre> <code> 
+build
+  ├── extendReportForFlexTable
+              └── Report.html
+</code> </pre>

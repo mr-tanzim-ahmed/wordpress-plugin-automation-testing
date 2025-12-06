@@ -19,14 +19,28 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
+      # Install Google Chrome
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      # Install ChromeDriver
+      - name: Install ChromeDriver
+        uses: nanasess/setup-chromedriver@v2
+
+      # Verify Chrome & ChromeDriver Installation
+      - name: Verify Chrome Installation
+        run: |
+          echo "Chrome version:"; google-chrome --version
+          echo "ChromeDriver version:"; chromedriver --version
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build --no-daemon
 
       - name: Run TestNG Suite
-        run: ./gradlew test -PsuitePath=src/test/resources/regressionSuiteForFlexTablePluginWithReport.xml
+        run: ./gradlew test -PsuitePath=src/test/resources/regressionSuiteForFlexTablePluginWithReport.xml --no-daemon
 
       - name: Upload Extent Report
         uses: actions/upload-artifact@v4
